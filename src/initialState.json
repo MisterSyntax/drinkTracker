@@ -10,7 +10,7 @@
             "lastDrank": "2017-05-30",
             "drinkId": 0,
             "flags": {
-                "invalidPrice" : 0,
+                "badPrice" : 0,
                 "unavailable": 0
             }
         },
@@ -24,7 +24,7 @@
             "lastDrank": "2017-05-30",
             "drinkId": 1,
             "flags": {
-                "invalidPrice" : 0,
+                "badPrice" : 0,
                 "unavailable": 0
             }
         },
@@ -38,7 +38,7 @@
             "lastDrank": "2017-05-30",
             "drinkId": 2,
             "flags": {
-                "invalidPrice" : 0,
+                "badPrice" : 0,
                 "unavailable": 0
             }
         }

@@ -1,62 +1,20 @@
 import C from "./constants"
-import { allDrinks } from "./store/reducers"
+import { suggestions } from "./store/reducers"
 
-const state = [
-        {
-            "name": "Budweiser",
-            "bar": "Side Bar",
-            "geo": "TODO-1",
-            "price": 2,
-            "size": "16 oz",
-            "totalDrinks":1,
-            "lastDrank": "2017-05-30",
-            "drinkId": 0,
-            "flags": {
-                "invalidPrice" : 0,
-                "unavailable": 0
-            }
-        },
-        {
-            "name": "Budweiser",
-            "bar": "Side Bar",
-            "geo": "TODO-2",
-            "price": 7,
-            "size": "Pitcher",
-            "totalDrinks":1,
-            "lastDrank": "2017-05-30",
-            "drinkId": 1,
-            "flags": {
-                "invalidPrice" : 0,
-                "unavailable": 0
-            }
-        },
-        {
-            "name": "Bud Light",
-            "bar": "Side Bar",
-            "geo": "TODO-3",
-            "price": "$2",
-            "size": "16 oz",
-            "totalDrinks": 1,
-            "lastDrank": "2017-05-30",
-            "drinkId": 2,
-            "flags": {
-                "invalidPrice" : 0,
-                "unavailable": 0
-            }
-        }
-    ]
+const state = ["Budweiser", "Bud Light", "PBR", "Sculpin"];
+    
 
 const action = {
-    type: C.INCREMENT_DRINK,
-    payload: 2
-}
+    type: C.CHANGE_BAR_SUGGESTIONS,
+    payload: ["1","2","3"]
+};
 
-const nextState = allDrinks(state, action);
+const nextState = suggestions(state, action);
 
 console.log(`
 
-    initial state: ${state[2].totalDrinks}
+    initial state: ${JSON.stringify(state)}
     action: ${JSON.stringify(action)}
-    new state: ${nextState[2].totalDrinks}
+    new state: ${JSON.stringify(nextState)}
 
 `);
