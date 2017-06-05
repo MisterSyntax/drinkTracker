@@ -1,4 +1,5 @@
 import C from "../constants"
+import { combineReducers } from "redux"
 
 /**
  * @description: Reducer for managing whether a user drank a drink
@@ -230,7 +231,7 @@ export const allDrinks = (state = {}, action) => {
  * @param: state - current state of drink or null 
  * @param: action - either ADD_ERROR or REMOVE_ERROR
  */
-export const error = (state = [], action) => {
+export const errors = (state = [], action) => {
     switch (action.type) {
 
         case C.ADD_ERROR:
@@ -312,3 +313,16 @@ export const suggestions = (state=[], action) => {
         
     }
 }
+
+export default combineReducers({
+    allDrinks,
+    errors,
+    barNames: combineReducers({
+        fetching,
+        suggestions
+    }),
+    drinkNames: combineReducers({
+        fetching,
+        suggestions
+    })
+})

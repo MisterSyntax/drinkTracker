@@ -1,20 +1,47 @@
 import C from "./constants"
-import { suggestions } from "./store/reducers"
+import appReducer from "./store/reducers"
+import initialState from "./initialState"; 
 
-const state = ["Budweiser", "Bud Light", "PBR", "Sculpin"];
-    
-
-const action = {
-    type: C.CHANGE_BAR_SUGGESTIONS,
-    payload: ["1","2","3"]
-};
-
-const nextState = suggestions(state, action);
+let state = initialState;
 
 console.log(`
 
-    initial state: ${JSON.stringify(state)}
-    action: ${JSON.stringify(action)}
-    new state: ${JSON.stringify(nextState)}
+    initial state:
+    =============
+    Total Drinks: ${state.allDrinks.length}
+    Drink Suggestions: ${state.drinkNames.suggestions}
+
+
+`);
+
+state = appReducer(state, {
+    type: C.ADD_DRINK,
+    payload: {
+            "name": "Budweiser",
+            "bar": "Coogan's",
+            "geo": "TODO-1",
+            "price": 1,
+            "size": "16 oz",
+            "totalDrinks":1,
+            "lastDrank": "2017-06-05",
+            "drinkId": 3,
+            "flags": {
+                "badPrice" : 0,
+                "unavailable": 0
+            }
+        }
+});
+state = appReducer(state, {
+    type: C.CHANGE_DRINK_SUGGESTIONS,
+    payload: ["cat piss", "vinegar", "tears"]
+})
+
+
+console.log(`
+
+    Next state:
+    =============
+    Total Drinks: ${state.allDrinks.length}
+    Drink Suggestions: ${state.drinkNames.suggestions}
 
 `);
