@@ -1,47 +1,37 @@
 import C from "./constants"
 import appReducer from "./store/reducers"
-import initialState from "./initialState"; 
+import { createStore } from "redux"
 
-let state = initialState;
+const store = createStore(appReducer);
 
-console.log(`
+const unsubscriberLogger = store.subscribe(
+    () => console.log(` Goal: ${store.getState().allDrinks.length}`)
+    );
 
-    initial state:
-    =============
-    Total Drinks: ${state.allDrinks.length}
-    Drink Suggestions: ${state.drinkNames.suggestions}
-
-
-`);
-
-state = appReducer(state, {
-    type: C.ADD_DRINK,
-    payload: {
-            "name": "Budweiser",
-            "bar": "Coogan's",
+let x = 0;
+setInterval(()=> {
+    x++;
+    store.dispatch({
+        type: C.ADD_DRINK,
+        payload:  {
+            "name": "Budweiser"+x,
+            "bar": "Side Bar",
             "geo": "TODO-1",
-            "price": 1,
+            "price": 2,
             "size": "16 oz",
             "totalDrinks":1,
-            "lastDrank": "2017-06-05",
-            "drinkId": 3,
+            "lastDrank": "2017-05-30",
+            "drinkId": 4+x,
             "flags": {
                 "badPrice" : 0,
                 "unavailable": 0
             }
         }
-});
-state = appReducer(state, {
-    type: C.CHANGE_DRINK_SUGGESTIONS,
-    payload: ["cat piss", "vinegar", "tears"]
-})
+    });
+}, 250)
 
-
-console.log(`
-
-    Next state:
-    =============
-    Total Drinks: ${state.allDrinks.length}
-    Drink Suggestions: ${state.drinkNames.suggestions}
-
-`);
+setTimeout(()=>{
+unsubscriberLogger()
+}
+    ,3000
+);

@@ -141,7 +141,8 @@ export const drink = (state = {}, action) => {
  *                  - INCREMENT_DRINK : id of drink to increment
  *                  - DECREMENT_DRINK : id of drink to decrement
  **/
-export const allDrinks = (state = {}, action) => {
+export const allDrinks = (state = [], action) => {
+
     switch (action.type) {
 
         case C.ADD_DRINK: {
