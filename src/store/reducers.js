@@ -231,6 +231,7 @@ export const allDrinks = (state = [], action) => {
  * @description: Reducer for adding or removing an error
  * @param: state - current state of drink or null 
  * @param: action - either ADD_ERROR or REMOVE_ERROR
+ *  - either an error message or 
  */
 export const errors = (state = [], action) => {
     switch (action.type) {
@@ -252,11 +253,11 @@ export const errors = (state = [], action) => {
 }
 
 /**
- * @description: Reducer for managing wether we're fetching suggestions
- * @param: {boolean} state - state of wether we're fetching drinks or bars
- * @param: action - either FETCH_DRINK_SUGGESTIONS, CANCEL_FETCHING_DRINK_SUGGESTIONS, FETCH_BAR_SUGGESTIONS or CANCEL_FETCHING_BAR_SUGGESTIONS
+ * @description: Reducer for managing wether we're fetching drink suggestions
+ * @param: {boolean} state - state of wether we're fetching drinks
+ * @param: action - either FETCH_DRINK_SUGGESTIONS, CANCEL_FETCHING_DRINK_SUGGESTIONS
  */
-export const fetching = (state=false, action) => {
+export const fetchingDrinks = (state=false, action) => {
     
     switch(action.type) {
 
@@ -267,6 +268,22 @@ export const fetching = (state=false, action) => {
         case C.CANCEL_FETCHING_DRINK_SUGGESTIONS : {
             return false;
         }
+
+        default:{
+            return state;
+        }
+    }
+}
+
+
+/**
+ * @description: Reducer for managing wether we're fetching suggestions
+ * @param: {boolean} state - state of wether we're fetching drinks or bars
+ * @param: action - either FETCH_DRINK_SUGGESTIONS, CANCEL_FETCHING_DRINK_SUGGESTIONS
+ */
+export const fetchingBars = (state=false, action) => {
+    
+    switch(action.type) {
 
         case C.FETCH_BAR_SUGGESTIONS : {
             return true;
@@ -285,9 +302,9 @@ export const fetching = (state=false, action) => {
 /**
  * @description: For changing and clearing drink suggestions
  * @param: {array} state - the array of suggestions 
- * @param: action - CLEAR_BAR_SUGGESTIONS, CHANGE_BAR_SUGGESTIONS, CLEAR_DRINK_SUGGESTIONS, CHANGE_DRINK_SUGGESTIONS
+ * @param: action - CLEAR_BAR_SUGGESTIONS, CHANGE_BAR_SUGGESTIONS
  */
-export const suggestions = (state=[], action) => {
+export const suggestionsBar = (state=[], action) => {
     
     switch(action.type) {
 
@@ -295,7 +312,63 @@ export const suggestions = (state=[], action) => {
             return [];
         }
 
-        case C.CHANGE_BAR_SUGGESTION : {
+        case C.CHANGE_BAR_SUGGESTIONS : {
+            return action.payload;
+        }
+
+        default : {
+            return state;
+        }
+            
+        
+    }
+}
+
+/**
+ * @description: For changing and clearing drink suggestions
+ * @param: {array} state - the array of suggestions 
+ * @param: action - CLEAR_DRINK_SUGGESTIONS, CHANGE_DRINK_SUGGESTIONS
+ */
+export const suggestionsDrink = (state=[], action) => {
+    
+    switch(action.type) {
+
+
+        case C.CLEAR_DRINK_SUGGESTIONS : {
+            return [];
+        }
+
+        case C.CHANGE_DRINK_SUGGESTIONS : {
+            return action.payload;
+        }
+
+        default : {
+            return state;
+        }
+            
+        
+    }
+}
+
+
+
+
+
+
+/**
+ * @description: For changing and clearing drink suggestions
+ * @param: {array} state - the array of suggestions 
+ * @param: action - CLEAR_BAR_SUGGESTIONS, CHANGE_BAR_SUGGESTIONS, CLEAR_DRINK_SUGGESTIONS, CHANGE_DRINK_SUGGESTIONS
+ */
+export const drinkSuggestions = (state=[], action) => {
+    
+    switch(action.type) {
+
+        case C.CLEAR_BAR_SUGGESTIONS : {
+            return [];
+        }
+
+        case C.CHANGE_BAR_SUGGESTIONS : {
             return action.payload;
         }
 
@@ -319,11 +392,11 @@ export default combineReducers({
     allDrinks,
     errors,
     barNames: combineReducers({
-        fetching,
-        suggestions
+        fetchingBars,
+        suggestionsBar
     }),
     drinkNames: combineReducers({
-        fetching,
-        suggestions
+        fetchingDrinks,
+        suggestionsDrink
     })
 })

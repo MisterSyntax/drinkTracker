@@ -5,7 +5,7 @@
             "bar": "Side Bar",
             "geo": "TODO-1",
             "price": 2,
-            "size": "16 oz",
+            "size": 16,
             "totalDrinks":1,
             "lastDrank": "2017-05-30",
             "drinkId": 0,
@@ -19,7 +19,7 @@
             "bar": "Side Bar",
             "geo": "TODO-2",
             "price": 7,
-            "size": "Pitcher",
+            "size": 64,
             "totalDrinks":1,
             "lastDrank": "2017-05-30",
             "drinkId": 1,
@@ -33,7 +33,7 @@
             "bar": "Side Bar",
             "geo": "TODO-3",
             "price": "$2",
-            "size": "16 oz",
+            "size": 16,
             "totalDrinks": 1,
             "lastDrank": "2017-05-30",
             "drinkId": 2,
@@ -43,7 +43,7 @@
             }
         }
     ],
-    "errors":"",
+    "errors":[],
     "barNames":{
         "fetching": false,
         "suggestions": ["Side Bar", "The Last Drop", "Donahue's"]
