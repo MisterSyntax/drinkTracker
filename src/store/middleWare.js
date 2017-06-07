@@ -7,9 +7,12 @@
  *      - delay dispatching of action
  *  -Often stored in index.js in store
  */
-import C from "../constants"
-import appReducer from "./reducers"
-import { createStore, applyMiddleware } from "redux"
+import C from "../constants";
+import appReducer from "./reducers";
+import { createStore, applyMiddleware } from "redux";
+
+/**used to handle asynchronisity in middleware */
+import thunk from "redux-thunk";
 
 const consoleMessages = (store) => (next) => (action) => {
 
@@ -49,9 +52,10 @@ const consoleMessages = (store) => (next) => (action) => {
 /**
  * @description: This will create a store 
  * @param {object} - initial state of the store
- * @returns {store} - a eedux data store
+ * @returns {store} - a redux data store
  */
 export default (initialState={}) => {
     //we create a add our consoleMessages middleware to our created store with appReducer and initialState defining that store
-    return applyMiddleware(consoleMessages)(createStore)(appReducer,initialState);
+    //we add thunk for asynchronisity
+    return applyMiddleware(thunk, consoleMessages)(createStore)(appReducer,initialState);
 }

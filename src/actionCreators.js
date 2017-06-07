@@ -20,27 +20,27 @@ import C from "./constants"
  * @return
  */
 export const addDrink = (drink, bar, price, size, drinkId) => {
-    
+
     //Application logic
     const today = new Date();
-    const currentYMD = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-    const newId = drinkId ? drinkId : "TODO"+today.getTime().valueOf();
-    
-    
+    const currentYMD = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    const newId = drinkId ? drinkId : "TODO" + today.getTime().valueOf();
+
+
     return {
         type: C.ADD_DRINK,
         payload: {
             drink,
             bar,
-            geo: ("TODOgeo"+today.getTime().valueOf()),
+            geo: ("TODOgeo" + today.getTime().valueOf()),
             price,
             size,
-            totalDrinks:1,
+            totalDrinks: 1,
             lastDrank: currentYMD,
             drinkId: newId,
             flags: {
                 badPrice: 0,
-                unavailable:0
+                unavailable: 0
             }
         }
     };
@@ -120,7 +120,6 @@ export const cancelFetchingDrinkSuggestions = () => {
     };
 };
 
-
 export const fetchBarSuggestions = () => {
     return {
         type: C.FETCH_BAR_SUGGESTIONS
@@ -158,3 +157,25 @@ export const changeBarSuggestons = (suggestions) => {
         payload: suggestions
     }
 };
+
+/**
+ * @description: A thunk which returns a function witch takes
+ * @param {function} dispatch - the store's dispatch method
+ * @param {function} getState - the store's getState method
+ * @return
+ */
+export const randomErrors = () => (dispatch, getState) => {
+    if (!getState().barNames.fetchingBars) {
+        dispatch({
+            type: C.FETCH_BAR_SUGGESTIONS,
+        })
+        setTimeout(() => {
+            dispatch({
+                type: C.CANCEL_FETCHING_BAR_SUGGESTIONS
+            })
+        
+        }, 1500);
+    }
+
+
+}
