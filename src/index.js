@@ -1,11 +1,8 @@
 import storeFactory from "./store/middleWare";
-import { randomErrors } from "./actionCreators"
+import { suggestDrinkNames } from "./actionCreators"
 
 const store = storeFactory(JSON.parse(localStorage["thirsty-state"]));
 
 store.dispatch(
-    randomErrors()
-);
-store.dispatch(
-    randomErrors()
+    suggestDrinkNames("Bud")
 );

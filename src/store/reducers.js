@@ -236,6 +236,7 @@ export const allDrinks = (state = [], action) => {
 export const errors = (state = [], action) => {
     switch (action.type) {
 
+
         case C.ADD_ERROR:
             return [
                 ...state,
@@ -252,28 +253,6 @@ export const errors = (state = [], action) => {
 
 }
 
-/**
- * @description: Reducer for managing wether we're fetching drink suggestions
- * @param: {boolean} state - state of wether we're fetching drinks
- * @param: action - either FETCH_DRINK_SUGGESTIONS, CANCEL_FETCHING_DRINK_SUGGESTIONS
- */
-export const fetchingDrinks = (state=false, action) => {
-    
-    switch(action.type) {
-
-        case C.FETCH_DRINK_SUGGESTIONS : {
-            return true;
-        }
-        
-        case C.CANCEL_FETCHING_DRINK_SUGGESTIONS : {
-            return false;
-        }
-
-        default:{
-            return state;
-        }
-    }
-}
 
 
 /**
@@ -281,46 +260,79 @@ export const fetchingDrinks = (state=false, action) => {
  * @param: {boolean} state - state of wether we're fetching drinks or bars
  * @param: action - either FETCH_DRINK_SUGGESTIONS, CANCEL_FETCHING_DRINK_SUGGESTIONS
  */
-export const fetchingBars = (state=false, action) => {
-    
-    switch(action.type) {
+export const fetchingBars = (state = false, action) => {
 
-        case C.FETCH_BAR_SUGGESTIONS : {
+    switch (action.type) {
+
+        case C.FETCH_BAR_SUGGESTIONS: {
             return true;
         }
 
-        case C.CANCEL_FETCHING_BAR_SUGGESTIONS : {
+        case C.CANCEL_FETCHING_BAR_SUGGESTIONS: {
             return false;
         }
 
-        default:{
+        case C.CHANGE_BAR_SUGGESTIONS: {
+            return false;
+        }
+
+        default: {
             return state;
         }
     }
 }
+
+
 
 /**
  * @description: For changing and clearing drink suggestions
  * @param: {array} state - the array of suggestions 
  * @param: action - CLEAR_BAR_SUGGESTIONS, CHANGE_BAR_SUGGESTIONS
  */
-export const suggestionsBar = (state=[], action) => {
-    
-    switch(action.type) {
+export const suggestionsBar = (state = [], action) => {
 
-        case C.CLEAR_BAR_SUGGESTIONS : {
+    switch (action.type) {
+
+        case C.CLEAR_BAR_SUGGESTIONS: {
             return [];
         }
 
-        case C.CHANGE_BAR_SUGGESTIONS : {
+        case C.CHANGE_BAR_SUGGESTIONS: {
             return action.payload;
         }
 
-        default : {
+        default: {
             return state;
         }
-            
-        
+
+
+    }
+}
+
+/**
+ * @description: Reducer for managing wether we're fetching drink suggestions
+ * @param: {boolean} state - state of wether we're fetching drinks
+ * @param: action - either FETCH_DRINK_SUGGESTIONS, CANCEL_FETCHING_DRINK_SUGGESTIONS, CHANGE_DRINK_SUGGESTIONS
+ */
+export const fetchingDrinks = (state = false, action) => {
+
+    switch (action.type) {
+
+        case C.FETCH_DRINK_SUGGESTIONS: {
+            return true;
+        }
+
+        case C.CANCEL_FETCHING_DRINK_SUGGESTIONS: {
+            return false;
+        }
+
+        case C.CHANGE_DRINK_SUGGESTIONS: {
+            return false;
+        }
+
+        default: {
+            return state;
+        }
     }
 }
 
@@ -329,64 +341,27 @@ export const suggestionsBar = (state=[], action) => {
  * @param: {array} state - the array of suggestions 
  * @param: action - CLEAR_DRINK_SUGGESTIONS, CHANGE_DRINK_SUGGESTIONS
  */
-export const suggestionsDrink = (state=[], action) => {
-    
-    switch(action.type) {
+export const suggestionsDrink = (state = [], action) => {
+
+    switch (action.type) {
 
 
-        case C.CLEAR_DRINK_SUGGESTIONS : {
+        case C.CLEAR_DRINK_SUGGESTIONS: {
             return [];
         }
 
-        case C.CHANGE_DRINK_SUGGESTIONS : {
+        case C.CHANGE_DRINK_SUGGESTIONS: {
             return action.payload;
         }
 
-        default : {
+        default: {
             return state;
         }
-            
-        
+
+
     }
 }
 
-
-
-
-
-
-/**
- * @description: For changing and clearing drink suggestions
- * @param: {array} state - the array of suggestions 
- * @param: action - CLEAR_BAR_SUGGESTIONS, CHANGE_BAR_SUGGESTIONS, CLEAR_DRINK_SUGGESTIONS, CHANGE_DRINK_SUGGESTIONS
- */
-export const drinkSuggestions = (state=[], action) => {
-    
-    switch(action.type) {
-
-        case C.CLEAR_BAR_SUGGESTIONS : {
-            return [];
-        }
-
-        case C.CHANGE_BAR_SUGGESTIONS : {
-            return action.payload;
-        }
-
-        case C.CLEAR_DRINK_SUGGESTIONS : {
-            return [];
-        }
-
-        case C.CHANGE_DRINK_SUGGESTIONS : {
-            return action.payload;
-        }
-
-        default : {
-            return state;
-        }
-            
-        
-    }
-}
 
 export default combineReducers({
     allDrinks,

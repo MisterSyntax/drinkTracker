@@ -6,8 +6,10 @@
  *      -mutate global state/vars
  *      -fetching data
  */
-import C from "./constants"
+import C from "./constants";
 
+//isomorphic allows us to fetch data from servers
+import fetch from "isomorphic-fetch";
 
 
 
@@ -162,7 +164,6 @@ export const changeBarSuggestons = (suggestions) => {
  * @description: A thunk which returns a function witch takes
  * @param {function} dispatch - the store's dispatch method
  * @param {function} getState - the store's getState method
- * @return
  */
 export const randomErrors = () => (dispatch, getState) => {
     if (!getState().barNames.fetchingBars) {
@@ -177,5 +178,43 @@ export const randomErrors = () => (dispatch, getState) => {
         }, 1500);
     }
 
+
+}
+
+/**
+ * @description: A thunk which gives suggested beer names given the input param
+ * @param {string} vale - the charachters the user has input so far
+ */
+
+export const suggestDrinkNames = (value) => (dispatch, getState) => {
+
+        //flag that we're fetching suggestions
+        dispatch({
+            type:C.FETCH_DRINK_SUGGESTIONS
+        });
+
+        //fetch the suggestions, returns a promise
+        fetch("http://localhost:3333/drinkNames/" + value)
+            .then((response) => response.json())
+            .then((suggestions) =>{
+                dispatch({
+                    type: C.CHANGE_DRINK_SUGGESTIONS,
+                    payload: suggestions
+                });
+            })
+            .catch((error) =>{
+                dispatch(
+                    addError(error.message)
+                );
+
+                dispatch(
+                    cancelFetchingDrinkSuggestions()
+                );
+            }
+                
+
+            );
+
+        //
 
 }

@@ -1,5 +1,5 @@
 const express = require('express')
-const resorts = require('./beer-names.json')
+const resorts = require('./drink-names.json')
 const { port=3333, delay=0 } = require('minimist')(process.argv)
 const cors = require('cors')
 
@@ -15,10 +15,10 @@ const app = express()
     .use(logger)
     .use(cors())
     .use('/', express.static('./dist/img'))
-    .get('/beerNames', (req, res) =>
+    .get('/drinkNames', (req, res) =>
         res.status(200).json(resorts)
     )
-    .get('/beerNames/:name', (req, res) =>
+    .get('/drinkNames/:name', (req, res) =>
         setTimeout(() =>
                 res.status(200).json(
                     resorts.filter(byName(req.params.name))
