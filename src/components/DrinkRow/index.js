@@ -3,7 +3,8 @@ import PropTypes from "prop-types"
 
 
 
-export const DrinkRow = ({name, price, size, bar}) => {
+export const DrinkRow = ({name="Some Drink", price=10, size=100, bar="Some Bar"}) => {
+
     return (
         <tr className="drink">
             <td>{name}</td>
@@ -11,6 +12,7 @@ export const DrinkRow = ({name, price, size, bar}) => {
             <td>{size}</td>
             <td>{bar}</td>
         </tr>);
+        
 }
 
 DrinkRow.propTypes = {

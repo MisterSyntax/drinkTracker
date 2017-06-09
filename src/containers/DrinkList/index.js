@@ -9,16 +9,18 @@ export default class DrinkList extends React.Component {
             <div className="drink-list">
                 <table className="total-drinks">
                     <thead>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Size</th>
-                        <th>Bar</th>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Size</th>
+                            <th>Bar</th>
+                        </tr>
                     </thead>
                     <tbody>
+                        {
+                            this.props.drinks.map((drink, i) => {  return (<DrinkRow key={i} {...drink} />) })
+                        }
                     </tbody>
-                    {
-                        this.props.drinks.map((drink,i) => {console.log(drink);return(<DrinkRow key={i} {...drink} />)})
-                    }
                 </table>
             </div>
         )
@@ -26,6 +28,25 @@ export default class DrinkList extends React.Component {
     }
 };
 
+DrinkList.defaultProps = {
+
+        drinks: [{
+            "name": "Need a Drink",
+            "bar": "Need a Bar",
+            "geo": "TODO-1",
+            "price": 2,
+            "size": 16,
+            "totalDrinks": 1,
+            "lastDrank": "2017-05-30",
+            "drinkId": 0,
+            "flags": {
+                "badPrice": 0,
+                "unavailable": 0
+            }
+        }]
+
+};
+
 DrinkList.propTypes = {
-    drinks: PropTypes.array.isRequired
-}
+    drinks: PropTypes.array
+};

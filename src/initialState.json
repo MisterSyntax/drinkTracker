@@ -32,7 +32,7 @@
             "name": "Bud Light",
             "bar": "Side Bar",
             "geo": "TODO-3",
-            "price": "$2",
+            "price": 2,
             "size": 16,
             "totalDrinks": 1,
             "lastDrank": "2017-05-30",
