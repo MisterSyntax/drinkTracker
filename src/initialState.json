@@ -43,6 +43,10 @@
             }
         }
     ],
+    "filters":{
+        "priceMin": 0,
+        "priceMax": 100
+    },
     "errors":[],
     "barNames":{
         "fetching": false,

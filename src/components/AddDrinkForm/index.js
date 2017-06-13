@@ -1,9 +1,13 @@
 import React from "react"
 
-export default class AddDrink extends React.Component {
+/**
+ * Could probably make this a const but its a good example
+ */
+
+export default class AddDrinkForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: "" };
+        this.state = {};
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
