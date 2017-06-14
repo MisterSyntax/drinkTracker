@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import AutocompleteInput from "../AutocompleteInput"
+import sampleSuggestions from '../../../server/drink-names.json'
+import sampleBarSuggestions from '../../../server/bar-names.json'
+
+
+
 /**
  * Could probably make this a const but its a good example
  */
@@ -22,10 +28,10 @@ export default class AddDrinkForm extends React.Component {
             price: parseFloat(this.price.value),
             size: parseFloat(this.size.value)
         })
-        this.name = ''
-        this.bar = ''
-        this.price = ''
-        this.size = ''
+        this.name.value = ''
+        this.bar.value = ''
+        this.price.value = ''
+        this.size.value = ''
     }
 
     handleChange() {
@@ -44,15 +50,17 @@ export default class AddDrinkForm extends React.Component {
             <form id='add-drink-form' onSubmit={this.handleSubmit} >
                 <div className='formField'>
                     <label htmlFor='drink'>Drink Name:</label>
-                    <input id='drink' 
-                            defaultValue={drink} 
+                    <AutocompleteInput 
+                            options={sampleSuggestions}
+                            inputId="drinkSuggestions"
                             ref={(input)=>{this.name = input}}/>
                 </div>
 
                 <div className='formField'>
                     <label htmlFor='bar-name'>Bar Name:</label>
-                    <input id='bar-name' 
-                            defaultValue={barName} 
+                    <AutocompleteInput 
+                            options={sampleBarSuggestions}
+                            inputId="barSuggestions"
                             ref={(input)=>{this.bar = input}}/>
                 </div>
 
