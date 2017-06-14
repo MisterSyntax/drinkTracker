@@ -43,17 +43,13 @@
             }
         }
     ],
-    "filters":{
-        "priceMin": 0,
-        "priceMax": 100
-    },
     "errors":[],
     "barNames":{
-        "fetching": false,
-        "suggestions": ["Side Bar", "The Last Drop", "Donahue's"]
+        "fetchingBars": false,
+        "suggestionsBar": ["Side Bar", "The Last Drop", "Donahue's"]
     },
     "drinkNames":{
-        "fetching": false,
-        "suggestions": ["Budweiser", "Bud Light", "PBR"]
+        "fetchingDrinks": false,
+        "suggestionsDrink": ["Budweiser", "Bud Light", "PBR"]
     }
 }

@@ -1,7 +1,8 @@
-import React from "react";
-import "./allDrinks.css";
-import PropTypes from "prop-types";
-import { DrinkRow } from "../DrinkRow/"
+import React from 'react';
+import './allDrinks.css';
+import PropTypes from 'prop-types';
+import { DrinkRow } from '../DrinkRow/'
+import { DrinkListCount } from '../DrinkListCount/'
 import {
     Link
 } from 'react-router-dom'
@@ -14,12 +15,13 @@ export const DrinkList = ({drinks, filter}) => {
 
     return (
         <div className="drink-list">
+            <DrinkListCount numDrinks={filteredDrinks.length}/>
             <table className="total-drinks">
                 <thead>
                     <tr>
                         <td colSpan={4}>
-                            <Link to="/drink-list">All Drinks</Link>
-                            <Link to="/drink-list/16">Pints</Link>
+                            <Link to="/drink-list">All Drinks&nbsp;</Link>
+                            <Link to="/drink-list/16">Pints&nbsp;</Link>
                             <Link to="/drink-list/64">Pitchers</Link>
                         </td>
                     </tr>

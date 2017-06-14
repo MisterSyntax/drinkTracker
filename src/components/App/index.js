@@ -1,7 +1,7 @@
 import React from 'react'
 import { Nav } from '../Nav/'
 import { Main } from '../Main/'
-import { DrinkList } from '../DrinkList/'
+import DrinkList  from '../../containers/DrinkList'
 import AddDrinkForm from '../AddDrinkForm/'
 
 
@@ -24,13 +24,11 @@ export default class App extends React.Component {
         this.addDrink = this.addDrink.bind(this)
     }
 
-    addDrink(newDrink) { 
+    addDrink(newDrink) {
         //TODO: Replace with store and Redux
-        console.log('adding drnk');
-        console.log(newDrink);
         this.setState({
             allDrinks: [
-                ...this.state.allDrinks, 
+                ...this.state.allDrinks,
                 newDrink
             ]
         })
@@ -43,21 +41,21 @@ export default class App extends React.Component {
 
                     <Nav />
                     <div id='page-content'>
+                        <Switch>
+                            <Route exact path='/' component={Main} />
 
-                        <Route exact path='/' component={Main} />
+                            <Route path='/add-drink' render={() =>
+                                <AddDrinkForm onNewDrink={this.addDrink} />
+                            } />
 
-                        <Route path='/add-drink' render={() =>
-                            <AddDrinkForm onNewDrink={this.addDrink} />
-                        } />
+                            <Route exact path='/drink-list' render={props =>
+                                <DrinkList drinks={this.state.allDrinks} filter=""/>
+                            } />
 
-                        <Route exact path='/drink-list' render={props =>
-                            <DrinkList drinks={this.state.allDrinks} />
-                        } />
-
-                        <Route exact path='/drink-list/:filter' render={props =>
-                            <DrinkList drinks={this.state.allDrinks} filter={props.match.params.filter} />
-                        } />
-
+                            <Route exact path='/drink-list/:filter' render={props =>
+                                <DrinkList drinks={this.state.allDrinks} filter={props.match.params.filter} />
+                            } />
+                        </Switch>
                     </div>
 
                 </div>

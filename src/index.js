@@ -3,7 +3,14 @@ import storeFactory from './store/middleWare'
 import { suggestDrinkNames } from './actionCreators'
 import C from './constants'
 
-/** * @description: react dependencies */
+/**@description: React redux dependencies
+ * @description - Provider: - can wrap around any component tree and will palce the store in context
+ *  -allows any child element to interact with the store
+ */
+import { Provider } from 'react-redux'
+
+/** * @description: react dependencies
+ */
 import React from 'react'
 import { render } from 'react-dom'
 
@@ -14,21 +21,16 @@ import App from './components/App/'
 import sampleData from './initialState.json'
 
 
-
-//TODO remove state stuff
-window.React = React;
-
-
 /**
  * @description: State stuff 
  */
 
-const initialState = (localStorage["thirsty-state"]) ?
-    JSON.parse(localStorage["thirsty-state"]) :
+const initialState = (localStorage['thirsty-state']) ?
+    JSON.parse(localStorage['thirsty-state']) :
     sampleData;
 
 const saveState = () => 
-    localStorage["redux-store"] = JSON.stringify(store.getState())
+    localStorage['redux-store'] = JSON.stringify(store.getState())
 
 //create our store
 const store = storeFactory(initialState);
@@ -42,7 +44,7 @@ window.React
 //sample dispatch
 /**
 store.dispatch(
-    suggestDrinkNames("Bud")
+    suggestDrinkNames('Bud')
 );
 **/
 
@@ -50,5 +52,7 @@ store.dispatch(
 
 /** *@description UI Stuff */
 render(
-   <App/>
+    <Provider store={store}>
+        <App/>
+   </Provider>
 , document.getElementById('react-container'))
