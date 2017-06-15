@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './allDrinks.css';
 import PropTypes from 'prop-types';
@@ -7,7 +8,7 @@ import {
     Link
 } from 'react-router-dom'
 
-export const DrinkList = ({drinks, filter}) => {
+export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
     const filteredDrinks =
         (!filter || !filter.match(/^(?:16|64)$/)) ?
             drinks
@@ -30,6 +31,7 @@ export const DrinkList = ({drinks, filter}) => {
                         <th>Price</th>
                         <th>Size</th>
                         <th>Bar</th>
+                        <th>Remove</th>
                     </tr>
 
                 </thead>
@@ -37,7 +39,7 @@ export const DrinkList = ({drinks, filter}) => {
                     {
                         filteredDrinks.map((drink, i) => {
 
-                            return (<DrinkRow key={i} {...drink} />)
+                            return (<DrinkRow key={i} {...drink} onRemoveDrink={onRemoveDrink}/>)
                         })
                     }
                 </tbody>

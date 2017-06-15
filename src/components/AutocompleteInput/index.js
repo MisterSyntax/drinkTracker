@@ -9,6 +9,7 @@ export default class AutocompleteInput extends React.Component {
 
     }
     get value() {
+        console.log(this)
         return this.inputText.value
     }
 
@@ -17,24 +18,36 @@ export default class AutocompleteInput extends React.Component {
     }
 
     render() {
+        const {inputId, holder="test", suggestions = [], onChange = f => f, onClear = f => f, fetching = false} = this.props
         return (
-            <div>
+            <div className="autocomplete">
+
                 <input ref={(input) => { this.inputText = input }}
+                    placeholder={holder}
                     type="text"
-                    list={this.props.inputId}
+                    onChange={onChange}
+                    onFocus={onChange}
+                    onBlur={() => setTimeout(onClear, 250)}
+                    list={inputId}
                 />
-                <datalist id={this.props.inputId}>
-                    {this.props.options.map(
-                        (opt, i) => {
+
+                <span>{(fetching) ? "Downloading" : null}</span>
+
+                <div id={inputId} className="suggestions">
+                    {suggestions.map(
+                        (item, i) => {
                             return (
-                                <option key={i}>{opt}</option>
+                                <p key={i} onClick={() => {
+                                    this.inputText.value = item
+                                    onClear()
+                                }}>{item}</p>
                             )
                         }
                     )}
-                </datalist>
+                </div>
+
             </div>
         )
-
     }
 }
 

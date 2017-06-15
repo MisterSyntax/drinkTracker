@@ -218,3 +218,41 @@ export const suggestDrinkNames = (value) => (dispatch, getState) => {
         //
 
 }
+
+/**
+ * @description: A thunk which gives suggested beer names given the input param
+ * @param {string} value - the charachters the user has input so far
+ */
+
+export const suggestBarNames = (value) => (dispatch, getState) => {
+
+        //flag that we're fetching suggestions
+        dispatch({
+            type:C.FETCH_BAR_SUGGESTIONS
+        });
+
+        //fetch the suggestions, returns a promise
+        fetch("http://localhost:3333/barNames/" + value)
+            .then((response) => response.json())
+            .then((suggestions) =>{
+                dispatch({
+                    type: C.CHANGE_BAR_SUGGESTIONS,
+                    payload: suggestions
+                });
+            })
+            .catch((error) =>{
+                dispatch(
+                    addError(error.message)
+                );
+
+                dispatch(
+                    cancelFetchingBarSuggestions()
+                );
+            }
+                
+
+            );
+
+        //
+
+}

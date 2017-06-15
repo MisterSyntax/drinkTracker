@@ -6,16 +6,21 @@
 import React from 'react'
 import { DrinkList } from '../../components/DrinkList/'
 import { connect } from 'react-redux'
+import { removeDrink } from '../../actionCreators'
 
-const mapStateToProps = (state, props) => {
-    
-    return {
+const mapStateToProps = (state, props) => 
+    ({
         drinks: state.allDrinks,
-        filter: props.filter 
-    }
+        filter: props.filter
+    })
 
-}
+const mapDispatchToProps = disptach =>
+    ({
+        onRemoveDrink(drink) {
+            disptach(
+                removeDrink(drink)
+            )
+        }
+    })
 
-const Container = connect(mapStateToProps)(DrinkList)
-
-export default Container
+export default connect(mapStateToProps, mapDispatchToProps)(DrinkList)

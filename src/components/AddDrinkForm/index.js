@@ -14,15 +14,12 @@ import sampleBarSuggestions from '../../../server/bar-names.json'
 export default class AddDrinkForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
-
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
     }
 
     handleSubmit(evt) {
         evt.preventDefault()
-        this.props.onNewDrink({
+        this.props.onAddDrink({
             name: this.name.value,
             bar: this.bar.value,
             price: parseFloat(this.price.value),
@@ -34,66 +31,59 @@ export default class AddDrinkForm extends React.Component {
         this.size.value = ''
     }
 
-    handleChange() {
-        alert('on Change')
-    }
-
     render() {
-        const {drink, 
-            barName, 
-            size, 
-            price,
-            onNewDrink} = this.props
-            console.log(onNewDrink);
-            
+        const { drinkSuggestions = [], barSuggestions = [], onAddDrink = f => f, onChangeBars = f => f, onChangeDrinks = f => f, onClearBars = f => f, onClearDrinks = f => f, fetchingBars = false, fetchingDrinks = false } = this.props
+
         return (
             <form id='add-drink-form' onSubmit={this.handleSubmit} >
-                <div className='formField'>
-                    <label htmlFor='drink'>Drink Name:</label>
-                    <AutocompleteInput 
-                            options={sampleSuggestions}
-                            inputId="drinkSuggestions"
-                            ref={(input)=>{this.name = input}}/>
-                </div>
 
                 <div className='formField'>
+                    
                     <label htmlFor='bar-name'>Bar Name:</label>
-                    <AutocompleteInput 
-                            options={sampleBarSuggestions}
-                            inputId="barSuggestions"
-                            ref={(input)=>{this.bar = input}}/>
+
+                    <AutocompleteInput                        
+                        inputId="barSuggestions"
+                        holder="Name of a Bar"
+                        ref={(input) => { this.bar = input }}
+                        suggestions={barSuggestions}
+                        onChange={()=>onChangeBars(this.bar.value)}
+                        fetching={fetchingBars}
+                    />
                 </div>
+
+
+                <div className='formField'>
+
+                    <label htmlFor='drink'>Drink Name:</label>
+
+                    <AutocompleteInput
+                        inputId="drinkSuggestions"
+                        holder="Name of a Drink"
+                        ref={(input) => { this.name = input }}
+                        suggestions={drinkSuggestions}
+                        onChange={()=>onChangeDrinks(this.name.value)}
+                        fetching={fetchingDrinks}  
+                    />
+
+                </div>
+
 
                 <div className='formField'>
                     <label htmlFor='drink-size'>Size:</label>
-                    <input id='drink-size' 
-                            defaultValue={size} 
-                            ref={(input)=>{this.size= input}}/>
+                    <input id='drink-size'
+                        placeholder="16"
+                        ref={(input) => { this.size = input }} />
                 </div>
+
 
                 <div className='formField'>
                     <label htmlFor='drink-price'>Price:</label>
-                    <input id='drink-price' 
-                            defaultValue={price} 
-                            ref={(input)=>{this.price = input}}/>
+                    <input id='drink-price'
+                        placeholder="5"
+                        ref={(input) => { this.price = input }} />
                 </div>
                 <button>Add Drink</button>
             </form>
         )
     }
-}
-
-
-AddDrinkForm.defaultProps = {
-    drink: 'Drink Name',
-    barName: 'Bar Name',
-    size: 16,
-    price: 5
-}
-
-AddDrinkForm.PropTypes = {
-    drink: PropTypes.string,
-    barName: PropTypes.string,
-    size: PropTypes.number,
-    price: PropTypes.number
 }
