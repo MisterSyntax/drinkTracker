@@ -1,6 +1,5 @@
 /** * @description: redux dependencies */
 import storeFactory from './store/middleWare'
-import { suggestDrinkNames } from './actionCreators'
 import C from './constants'
 
 /**@description: React redux dependencies
@@ -34,6 +33,7 @@ const saveState = () =>
 
 //create our store
 const store = storeFactory(initialState);
+
 //save our state whenever we change the state by subscribing
 store.subscribe(saveState);
 
@@ -42,11 +42,7 @@ window.store = store
 window.React
 
 //sample dispatch
-/**
-store.dispatch(
-    suggestDrinkNames('Bud')
-);
-**/
+
 
 
 

@@ -1,12 +1,10 @@
-
 import React from 'react';
 import './allDrinks.css';
 import PropTypes from 'prop-types';
 import { DrinkRow } from '../DrinkRow/'
 import { DrinkListCount } from '../DrinkListCount/'
-import {
-    Link
-} from 'react-router-dom'
+import { DrinkFilters } from '../DrinkFilters'
+
 
 export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
     const filteredDrinks =
@@ -16,16 +14,10 @@ export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
 
     return (
         <div className="drink-list">
+            <DrinkFilters />
             <DrinkListCount numDrinks={filteredDrinks.length}/>
-            <table className="total-drinks">
+            <table className="total-drinks pure-table pure-table-horizontal">
                 <thead>
-                    <tr>
-                        <td colSpan={4}>
-                            <Link to="/drink-list">All Drinks&nbsp;</Link>
-                            <Link to="/drink-list/16">Pints&nbsp;</Link>
-                            <Link to="/drink-list/64">Pitchers</Link>
-                        </td>
-                    </tr>
                     <tr>
                         <th>Name</th>
                         <th>Price</th>

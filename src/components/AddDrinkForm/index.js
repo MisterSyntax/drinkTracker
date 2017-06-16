@@ -15,10 +15,18 @@ export default class AddDrinkForm extends React.Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
+        
+    }
+    
+    //clears out any lingering suggestions from reloading the page
+    componentWillMount(){
+        this.props.onClearBars()
+        this.props.onClearDrinks()
     }
 
     handleSubmit(evt) {
         evt.preventDefault()
+        console.log("Name", this.name)
         this.props.onAddDrink({
             name: this.name.value,
             bar: this.bar.value,
@@ -47,6 +55,7 @@ export default class AddDrinkForm extends React.Component {
                         ref={(input) => { this.bar = input }}
                         suggestions={barSuggestions}
                         onChange={()=>onChangeBars(this.bar.value)}
+                        onClear={onClearBars}
                         fetching={fetchingBars}
                     />
                 </div>
@@ -62,6 +71,7 @@ export default class AddDrinkForm extends React.Component {
                         ref={(input) => { this.name = input }}
                         suggestions={drinkSuggestions}
                         onChange={()=>onChangeDrinks(this.name.value)}
+                        onClear={onClearDrinks}
                         fetching={fetchingDrinks}  
                     />
 

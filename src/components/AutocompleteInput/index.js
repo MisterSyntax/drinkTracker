@@ -2,6 +2,7 @@
 
 import PropTypes from 'prop-types'
 import React from 'react'
+import './autocomplete.scss'
 
 export default class AutocompleteInput extends React.Component {
     constructor(props) {
@@ -22,7 +23,8 @@ export default class AutocompleteInput extends React.Component {
         return (
             <div className="autocomplete">
 
-                <input ref={(input) => { this.inputText = input }}
+                <input 
+                    ref={(input) => { this.inputText = input }}
                     placeholder={holder}
                     type="text"
                     onChange={onChange}
@@ -40,6 +42,7 @@ export default class AutocompleteInput extends React.Component {
                                 <p key={i} onClick={() => {
                                     this.inputText.value = item
                                     onClear()
+                                    console.log("REF",this.refs.inputText)
                                 }}>{item}</p>
                             )
                         }

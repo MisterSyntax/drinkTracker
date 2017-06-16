@@ -1,0 +1,37 @@
+.autocomplete {
+    min-width: 200px;
+    position: relative;
+
+    span {
+      position: absolute;
+      right: 10px;
+    }
+
+    .suggestions {
+      position: absolute;
+      min-width: 200px; 
+      left: 0;
+      width: auto;
+      height: auto;
+      max-height: 200px;
+      background-color: white;
+      overflow-y: scroll;
+      z-index: 3;
+      border: 1px solid lightsteelblue;
+
+
+
+      p {
+        padding: 5px 10px;
+        margin: 0;
+
+        &:hover {
+          background-color: lightgray;
+        }
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+  }

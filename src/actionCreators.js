@@ -21,18 +21,18 @@ import fetch from "isomorphic-fetch";
  * @param {size} size - size of drink in oz.
  * @return
  */
-export const addDrink = (drink, bar, price, size, drinkId) => {
+export const addDrink = (name, bar, price, size, drinkId) => {
 
     //Application logic
     const today = new Date();
     const currentYMD = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-    const newId = drinkId ? drinkId : "TODO" + today.getTime().valueOf();
+    const newId = drinkId ? drinkId : parseInt(today.getTime().valueOf());
 
 
     return {
         type: C.ADD_DRINK,
         payload: {
-            drink,
+            name,
             bar,
             geo: ("TODOgeo" + today.getTime().valueOf()),
             price,

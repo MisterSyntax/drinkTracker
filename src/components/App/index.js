@@ -37,7 +37,7 @@ export default class App extends React.Component {
                                 <DrinkList filter=""/>
                             } />
 
-                            <Route exact path='/drink-list/:filter' render={props =>
+                            <Route exact path='/drink-list/size=:filter' render={props =>
                                 <DrinkList filter={props.match.params.filter} />
                             } />
                         </Switch>
