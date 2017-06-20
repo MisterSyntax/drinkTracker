@@ -2,19 +2,23 @@
 import storeFactory from './store/middleWare'
 import C from './constants'
 
+
 /**@description: React redux dependencies
  * @description - Provider: - can wrap around any component tree and will palce the store in context
  *  -allows any child element to interact with the store
  */
 import { Provider } from 'react-redux'
 
+
 /** * @description: react dependencies
  */
 import React from 'react'
 import { render } from 'react-dom'
 
+
 /**@description: components */
 import App from './components/App/'
+
 
 /**@description: data */
 import sampleData from './initialState.json'
@@ -23,7 +27,6 @@ import sampleData from './initialState.json'
 /**
  * @description: State stuff 
  */
-
 const initialState = (localStorage['thirsty-state']) ?
     JSON.parse(localStorage['thirsty-state']) :
     sampleData;
@@ -40,10 +43,6 @@ store.subscribe(saveState);
 //TODO: Remove debug store & React
 window.store = store
 window.React
-
-//sample dispatch
-
-
 
 
 /** *@description UI Stuff */

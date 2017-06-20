@@ -26,7 +26,6 @@ export default class AddDrinkForm extends React.Component {
 
     handleSubmit(evt) {
         evt.preventDefault()
-        console.log("Name", this.name)
         this.props.onAddDrink({
             name: this.name.value,
             bar: this.bar.value,

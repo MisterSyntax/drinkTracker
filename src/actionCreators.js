@@ -6,10 +6,10 @@
  *      -mutate global state/vars
  *      -fetching data
  */
-import C from "./constants";
+import C from "./constants"
 
 //isomorphic allows us to fetch data from servers
-import fetch from "isomorphic-fetch";
+import fetch from "isomorphic-fetch"
 
 
 
@@ -24,9 +24,9 @@ import fetch from "isomorphic-fetch";
 export const addDrink = (name, bar, price, size, drinkId) => {
 
     //Application logic
-    const today = new Date();
-    const currentYMD = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-    const newId = drinkId ? drinkId : parseInt(today.getTime().valueOf());
+    const today = new Date()
+    const currentYMD = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()
+    const newId = drinkId ? drinkId : parseInt(today.getTime().valueOf())
 
 
     return {
@@ -45,120 +45,120 @@ export const addDrink = (name, bar, price, size, drinkId) => {
                 unavailable: 0
             }
         }
-    };
-};
+    }
+}
 
 export const removeDrink = (drinkId) => {
     return {
         type: C.REMOVE_DRINK,
         payload: drinkId
     }
-};
+}
 
 export const incrementDrink = (drinkId) => {
     return {
         type: C.INCREMENT_DRINK,
         payload: drinkId
-    };
-};
+    }
+}
 
 export const decrementDrink = (drinkId) => {
     return {
         type: C.DECREMENT_DRINK,
         payload: drinkId
-    };
-};
+    }
+}
 
 export const flagUnavailable = (drinkId) => {
     return {
         type: C.FLAG_UNAVAILABLE,
         payload: drinkId
-    };
-};
+    }
+}
 
 export const flagPrice = (drinkId) => {
     return {
         type: C.FLAG_PRICE,
         payload: drinkId
-    };
-};
+    }
+}
 
 export const removeFlagUnavailable = (drinkId) => {
     return {
         type: C.REMOVE_FLAG_UNAVAILABLE,
         payload: drinkId
-    };
-};
+    }
+}
 
 export const removeFlagPrice = (drinkId) => {
     return {
         type: C.REMOVE_FLAG_PRICE,
         payload: drinkId
-    };
-};
+    }
+}
 
 export const addError = (errorMessage) => {
     return {
         type: C.ADD_ERROR,
         payload: errorMessage
-    };
-};
+    }
+}
 
 export const removeError = (index) => {
     return {
         type: C.REMOVE_ERROR,
         payload: index
-    };
-};
+    }
+}
 
 export const fetchDrinkSuggestions = () => {
     return {
         type: C.FETCH_DRINK_SUGGESTIONS
-    };
-};
+    }
+}
 export const cancelFetchingDrinkSuggestions = () => {
     return {
         type: C.CANCEL_FETCHING_DRINK_SUGGESTIONS,
-    };
-};
+    }
+}
 
 export const fetchBarSuggestions = () => {
     return {
         type: C.FETCH_BAR_SUGGESTIONS
-    };
-};
+    }
+}
 
 export const cancelFetchingBarSuggestions = () => {
     return {
         type: C.CANCEL_FETCHING_BAR_SUGGESTIONS,
-    };
-};
+    }
+}
 
 export const clearDrinkSuggestions = () => {
     return {
         type: C.CLEAR_DRINK_SUGGESTIONS
     }
-};
+}
 
 export const clearBarSuggestions = () => {
     return {
         type: C.CLEAR_BAR_SUGGESTIONS
     }
-};
+}
 
 export const changeDrinkSuggestons = (suggestions) => {
     return {
         type: C.CHANGE_DRINK_SUGGESTIONS,
         payload: suggestions
     }
-};
+}
 
 export const changeBarSuggestons = (suggestions) => {
     return {
         type: C.CHANGE_BAR_SUGGESTIONS,
         payload: suggestions
     }
-};
+}
 
 /**
  * @description: A thunk which returns a function witch takes
@@ -175,7 +175,7 @@ export const randomErrors = () => (dispatch, getState) => {
                 type: C.CANCEL_FETCHING_BAR_SUGGESTIONS
             })
         
-        }, 1500);
+        }, 1500)
     }
 
 
@@ -191,7 +191,7 @@ export const suggestDrinkNames = (value) => (dispatch, getState) => {
         //flag that we're fetching suggestions
         dispatch({
             type:C.FETCH_DRINK_SUGGESTIONS
-        });
+        })
 
         //fetch the suggestions, returns a promise
         fetch("http://localhost:3333/drinkNames/" + value)
@@ -200,20 +200,20 @@ export const suggestDrinkNames = (value) => (dispatch, getState) => {
                 dispatch({
                     type: C.CHANGE_DRINK_SUGGESTIONS,
                     payload: suggestions
-                });
+                })
             })
             .catch((error) =>{
                 dispatch(
                     addError(error.message)
-                );
+                )
 
                 dispatch(
                     cancelFetchingDrinkSuggestions()
-                );
+                )
             }
                 
 
-            );
+            )
 
         //
 
@@ -229,7 +229,7 @@ export const suggestBarNames = (value) => (dispatch, getState) => {
         //flag that we're fetching suggestions
         dispatch({
             type:C.FETCH_BAR_SUGGESTIONS
-        });
+        })
 
         //fetch the suggestions, returns a promise
         fetch("http://localhost:3333/barNames/" + value)
@@ -238,21 +238,27 @@ export const suggestBarNames = (value) => (dispatch, getState) => {
                 dispatch({
                     type: C.CHANGE_BAR_SUGGESTIONS,
                     payload: suggestions
-                });
+                })
             })
             .catch((error) =>{
                 dispatch(
                     addError(error.message)
-                );
+                )
 
                 dispatch(
                     cancelFetchingBarSuggestions()
-                );
+                )
             }
                 
 
-            );
+            )
 
-        //
 
+}
+
+export const setLocation = (location) => {
+    return {
+        type: C.SET_LOCATION,
+        payload: location
+    }
 }

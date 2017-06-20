@@ -51,5 +51,9 @@
     "drinkNames":{
         "fetchingDrinks": false,
         "suggestionsDrink": ["Budweiser", "Bud Light", "PBR"]
+    },
+    "location":{
+        "lat":0,
+        "lng":0
     }
 }

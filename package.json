@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-core/register ./tests/**/*spec.js",
     "start": "./node_modules/.bin/webpack-dev-server",
     "suggestions": "./node_modules/.bin/babel-node ./server"
   },
@@ -20,11 +20,11 @@
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.4",
     "json-loader": "^0.5.4",
+    "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.5",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
-    "webpac": "^1.0.1",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },

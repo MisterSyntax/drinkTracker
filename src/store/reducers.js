@@ -362,6 +362,28 @@ export const suggestionsDrink = (state = [], action) => {
     }
 }
 
+/**
+ * @description: Reducer for adding or removing an error
+ * @param: state - current state of drink or null 
+ * @param: action - either C.GET_LOCATION or C.SET_LOACTION
+ *  - either an error message or 
+ */
+export const location = (state = {}, action) => {
+
+    switch (action.type) {
+
+        case C.SET_LOCATION: {
+            return action.payload;
+        }            
+
+        default:
+            return state;
+
+    }
+
+}
+
+
 
 export default combineReducers({
     allDrinks,
@@ -373,5 +395,6 @@ export default combineReducers({
     drinkNames: combineReducers({
         fetchingDrinks,
         suggestionsDrink
-    })
+    }),
+    location
 })

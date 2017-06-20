@@ -10,7 +10,6 @@ export default class AutocompleteInput extends React.Component {
 
     }
     get value() {
-        console.log(this)
         return this.inputText.value
     }
 
@@ -42,7 +41,6 @@ export default class AutocompleteInput extends React.Component {
                                 <p key={i} onClick={() => {
                                     this.inputText.value = item
                                     onClear()
-                                    console.log("REF",this.refs.inputText)
                                 }}>{item}</p>
                             )
                         }
