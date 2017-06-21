@@ -26,7 +26,7 @@ const consoleMessages = (store) => (next) => (action) => {
     result = next(action);
 
     //after action
-    let {allDrinks, barNames, drinkNames, errors} = store.getState();
+    let {allDrinks, barNames, drinkNames, errors, userLocation} = store.getState();
 
     console.log(`
 
@@ -39,6 +39,7 @@ const consoleMessages = (store) => (next) => (action) => {
         Bar Suggestions: ${barNames.suggestionsBar}
         Fetching Drink Suggestions: ${drinkNames.fetchingDrinks}
         Drink Suggestions: ${drinkNames.suggestionsDrink}
+        Location: ${userLocation.lat} ${userLocation.lng}
 
     
     `);

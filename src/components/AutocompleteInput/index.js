@@ -18,7 +18,7 @@ export default class AutocompleteInput extends React.Component {
     }
 
     render() {
-        const {inputId, holder="test", suggestions = [], onChange = f => f, onClear = f => f, fetching = false} = this.props
+        const {inputId, holder="test", suggestions = [], onChange = f => f, onClear = f => f, fetching = false, onFocus} = this.props
         return (
             <div className="autocomplete">
 
@@ -27,7 +27,7 @@ export default class AutocompleteInput extends React.Component {
                     placeholder={holder}
                     type="text"
                     onChange={onChange}
-                    onFocus={onChange}
+                    onFocus={onFocus}
                     onBlur={() => setTimeout(onClear, 250)}
                     list={inputId}
                 />

@@ -174,7 +174,7 @@ export const randomErrors = () => (dispatch, getState) => {
             dispatch({
                 type: C.CANCEL_FETCHING_BAR_SUGGESTIONS
             })
-        
+
         }, 1500)
     }
 
@@ -188,34 +188,34 @@ export const randomErrors = () => (dispatch, getState) => {
 
 export const suggestDrinkNames = (value) => (dispatch, getState) => {
 
-        //flag that we're fetching suggestions
-        dispatch({
-            type:C.FETCH_DRINK_SUGGESTIONS
-        })
+    //flag that we're fetching suggestions
+    dispatch({
+        type: C.FETCH_DRINK_SUGGESTIONS
+    })
 
-        //fetch the suggestions, returns a promise
-        fetch("http://localhost:3333/drinkNames/" + value)
-            .then((response) => response.json())
-            .then((suggestions) =>{
-                dispatch({
-                    type: C.CHANGE_DRINK_SUGGESTIONS,
-                    payload: suggestions
-                })
+    //fetch the suggestions, returns a promise
+    fetch("http://localhost:3333/drinkNames/" + value)
+        .then((response) => response.json())
+        .then((suggestions) => {
+            dispatch({
+                type: C.CHANGE_DRINK_SUGGESTIONS,
+                payload: suggestions
             })
-            .catch((error) =>{
-                dispatch(
-                    addError(error.message)
-                )
-
-                dispatch(
-                    cancelFetchingDrinkSuggestions()
-                )
-            }
-                
-
+        })
+        .catch((error) => {
+            dispatch(
+                addError(error.message)
             )
 
-        //
+            dispatch(
+                cancelFetchingDrinkSuggestions()
+            )
+        }
+
+
+        )
+
+    //
 
 }
 
@@ -226,39 +226,51 @@ export const suggestDrinkNames = (value) => (dispatch, getState) => {
 
 export const suggestBarNames = (value) => (dispatch, getState) => {
 
-        //flag that we're fetching suggestions
-        dispatch({
-            type:C.FETCH_BAR_SUGGESTIONS
-        })
+    //flag that we're fetching suggestions
+    dispatch({
+        type: C.FETCH_BAR_SUGGESTIONS
+    })
 
-        //fetch the suggestions, returns a promise
-        fetch("http://localhost:3333/barNames/" + value)
-            .then((response) => response.json())
-            .then((suggestions) =>{
-                dispatch({
-                    type: C.CHANGE_BAR_SUGGESTIONS,
-                    payload: suggestions
-                })
+    //fetch the suggestions, returns a promise
+    fetch("http://localhost:3333/barNames/" + value)
+        .then((response) => response.json())
+        .then((suggestions) => {
+            dispatch({
+                type: C.CHANGE_BAR_SUGGESTIONS,
+                payload: suggestions
             })
-            .catch((error) =>{
-                dispatch(
-                    addError(error.message)
-                )
-
-                dispatch(
-                    cancelFetchingBarSuggestions()
-                )
-            }
-                
-
+        })
+        .catch((error) => {
+            dispatch(
+                addError(error.message)
             )
+
+            dispatch(
+                cancelFetchingBarSuggestions()
+            )
+        }
+
+
+        )
 
 
 }
 
-export const setLocation = (location) => {
+export const setUserLocation = (userLocation) => {
     return {
-        type: C.SET_LOCATION,
-        payload: location
+        type: C.SET_USER_LOCATION,
+        payload: userLocation
+    }
+}
+
+export const enableAutoLocate = () => {
+    return {
+        type: C.ENABLE_AUTO_LOCATE
+    }
+}
+
+export const disableAutoLocate = () => {
+    return {
+        type: C.DISABLE_AUTO_LOCATE
     }
 }

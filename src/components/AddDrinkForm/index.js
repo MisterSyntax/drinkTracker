@@ -5,6 +5,8 @@ import AutocompleteInput from "../AutocompleteInput"
 import sampleSuggestions from '../../../server/drink-names.json'
 import sampleBarSuggestions from '../../../server/bar-names.json'
 
+import BarMap from '../../containers/BarMap/'
+
 
 
 /**
@@ -15,6 +17,7 @@ export default class AddDrinkForm extends React.Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.getUserLocation = this.getUserLocation.bind(this)
         
     }
     
@@ -37,11 +40,28 @@ export default class AddDrinkForm extends React.Component {
         this.price.value = ''
         this.size.value = ''
     }
+    getUserLocation() {
+        console.log('get the loco')
+        //get a location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position.coords.latitude)
+                const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
+                this.props.onSetUserLocation(userLocation)
+            })
+        }
+        else {
+            //TODO: Ask the user for their location
+            this.props.userLocation.lat = 0
+            this.props.userLocation.lng = 0
+        }
+    }
 
     render() {
         const { drinkSuggestions = [], barSuggestions = [], onAddDrink = f => f, onChangeBars = f => f, onChangeDrinks = f => f, onClearBars = f => f, onClearDrinks = f => f, fetchingBars = false, fetchingDrinks = false } = this.props
 
         return (
+            <div id='add-drink-page'>
             <form id='add-drink-form' onSubmit={this.handleSubmit} >
 
                 <div className='formField'>
@@ -53,6 +73,7 @@ export default class AddDrinkForm extends React.Component {
                         holder="Name of a Bar"
                         ref={(input) => { this.bar = input }}
                         suggestions={barSuggestions}
+                        onFocus={this.getUserLocation}
                         onChange={()=>onChangeBars(this.bar.value)}
                         onClear={onClearBars}
                         fetching={fetchingBars}
@@ -93,6 +114,7 @@ export default class AddDrinkForm extends React.Component {
                 </div>
                 <button>Add Drink</button>
             </form>
+            </div>
         )
     }
 }

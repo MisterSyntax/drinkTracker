@@ -11,7 +11,7 @@ import AddDrinkForm from '../../components/AddDrinkForm/'
 
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { addDrink, suggestDrinkNames, suggestBarNames, clearBarSuggestions, clearDrinkSuggestions } from '../../actionCreators'
+import { addDrink, suggestDrinkNames, suggestBarNames, clearBarSuggestions, clearDrinkSuggestions, setUserLocation } from '../../actionCreators'
 
 const mapStateToProps = (state, props) => (
     {
@@ -51,6 +51,11 @@ const mapDispatchToProps = dispatch => {
         },
         onClearDrinks() {
             dispatch(clearDrinkSuggestions())
+        },
+        onSetUserLocation(userLocation) {
+            dispatch(
+                setUserLocation(userLocation)
+            )
         }
     }
 }

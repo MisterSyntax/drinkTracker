@@ -10,20 +10,20 @@ export const drinkTotal = (state = 0, action) => {
     switch (action.type) {
 
         case C.INCREMENT_DRINK: {
-            return state + 1;
+            return state + 1
         }
 
         case C.DECREMENT_DRINK: {
-            return state - 1;
+            return state - 1
         }
 
         default: {
-            return state;
+            return state
         }
 
     }
-    const newState = state + 1;
-    return newState;
+    const newState = state + 1
+    return newState
 }
 
 
@@ -37,22 +37,22 @@ export const flag = (state = 0, action) => {
     //TODO: Manage flags per user basis
     switch (action.type) {
         case C.FLAG_PRICE: {
-            return state + 1;
+            return state + 1
         }
         case C.REMOVE_FLAG_PRICE: {
             return (state > 0) ?
                 state - 1 :
-                state;
+                state
         }
         case C.FLAG_UNAVAILABLE: {
-            return state + 1;
+            return state + 1
         }
         case C.REMOVE_FLAG_UNAVAILABLE: {
             return (state > 0) ?
                 state - 1 :
-                state;
+                state
         }
-        default: return state;
+        default: return state
     }
 }
 
@@ -67,18 +67,18 @@ export const allFlags = (state = {}, action) => {
     //or could use fall through
     switch (action.type) {
         case C.FLAG_PRICE: {
-            return Object.assign({}, state, { badPrice: flag(state.badPrice, action) });
+            return Object.assign({}, state, { badPrice: flag(state.badPrice, action) })
         }
         case C.REMOVE_FLAG_PRICE: {
-            return Object.assign({}, state, { badPrice: flag(state.badPrice, action) });
+            return Object.assign({}, state, { badPrice: flag(state.badPrice, action) })
         }
         case C.FLAG_UNAVAILABLE: {
-            return Object.assign({}, state, { unavailable: flag(state.unavailable, action) });
+            return Object.assign({}, state, { unavailable: flag(state.unavailable, action) })
         }
         case C.REMOVE_FLAG_UNAVAILABLE: {
-            return Object.assign({}, state, { unavailable: flag(state.unavailable, action) });
+            return Object.assign({}, state, { unavailable: flag(state.unavailable, action) })
         }
-        default: return state;
+        default: return state
     }
 }
 
@@ -96,35 +96,35 @@ export const drink = (state = {}, action) => {
         case C.ADD_DRINK: {
             return (action.type === C.ADD_DRINK) ?
                 action.payload :
-                state;
+                state
         }
 
         case C.INCREMENT_DRINK: {
-            return Object.assign({}, state, { totalDrinks: drinkTotal(state.totalDrinks, action) });
+            return Object.assign({}, state, { totalDrinks: drinkTotal(state.totalDrinks, action) })
         }
 
         case C.DECREMENT_DRINK: {
-            return Object.assign({}, state, { totalDrinks: drinkTotal(state.totalDrinks, action) });
+            return Object.assign({}, state, { totalDrinks: drinkTotal(state.totalDrinks, action) })
         }
 
         case C.FLAG_PRICE: {
-            return Object.assign({}, state, { flags: allFlags(state.flags, action) });
+            return Object.assign({}, state, { flags: allFlags(state.flags, action) })
         }
 
         case C.REMOVE_FLAG_PRICE: {
-            return Object.assign({}, state, { flags: allFlags(state.flags, action) });
+            return Object.assign({}, state, { flags: allFlags(state.flags, action) })
         }
 
         case C.FLAG_UNAVAILABLE: {
-            return Object.assign({}, state, { flags: allFlags(state.flags, action) });
+            return Object.assign({}, state, { flags: allFlags(state.flags, action) })
         }
 
         case C.REMOVE_FLAG_UNAVAILABLE: {
-            return Object.assign({}, state, { flags: allFlags(state.flags, action) });
+            return Object.assign({}, state, { flags: allFlags(state.flags, action) })
         }
 
         default: {
-            return state;
+            return state
         }
 
     }
@@ -160,13 +160,13 @@ export const allDrinks = (state = [], action) => {
                 [
                     ...state,
                     drink(null, action)
-                ];
+                ]
         }
 
         case C.REMOVE_DRINK: {
             return state.filter((curr, index) => {
                 return curr.drinkId === action.payload ? 0 : 1
-            });
+            })
         }
 
         case C.INCREMENT_DRINK: {
@@ -174,8 +174,8 @@ export const allDrinks = (state = [], action) => {
             return state.map((curr, index) => {
                 return (curr.drinkId === action.payload) ?
                     drink(curr, action) :
-                    curr;
-            });
+                    curr
+            })
         }
 
 
@@ -184,45 +184,45 @@ export const allDrinks = (state = [], action) => {
             return state.map((curr, index) => {
                 return (curr.drinkId === action.payload) ?
                     drink(curr, action) :
-                    curr;
-            });
+                    curr
+            })
         }
 
         case C.FLAG_PRICE: {
             return state.map((curr, index) => {
                 return (curr.drinkId === action.payload) ?
                     drink(curr, action) :
-                    curr;
-            });
+                    curr
+            })
         }
 
         case C.REMOVE_FLAG_PRICE: {
             return state.map((curr, index) => {
                 return (curr.drinkId === action.payload) ?
                     drink(curr, action) :
-                    curr;
-            });
+                    curr
+            })
         }
 
         case C.FLAG_UNAVAILABLE: {
             return state.map((curr, index) => {
                 return (curr.drinkId === action.payload) ?
                     drink(curr, action) :
-                    curr;
-            });
+                    curr
+            })
         }
 
         case C.REMOVE_FLAG_UNAVAILABLE: {
             return state.map((curr, index) => {
                 return (curr.drinkId === action.payload) ?
                     drink(curr, action) :
-                    curr;
-            });
+                    curr
+            })
         }
 
 
         default:
-            return state;
+            return state
     }
 
 }
@@ -241,13 +241,13 @@ export const errors = (state = [], action) => {
             return [
                 ...state,
                 action.payload
-            ];
+            ]
 
         case C.REMOVE_ERROR:
-            return state.filter((message, index) => index === action.payload ? 0 : 1);
+            return state.filter((message, index) => index === action.payload ? 0 : 1)
 
         default:
-            return state;
+            return state
 
     }
 
@@ -265,19 +265,19 @@ export const fetchingBars = (state = false, action) => {
     switch (action.type) {
 
         case C.FETCH_BAR_SUGGESTIONS: {
-            return true;
+            return true
         }
 
         case C.CANCEL_FETCHING_BAR_SUGGESTIONS: {
-            return false;
+            return false
         }
 
         case C.CHANGE_BAR_SUGGESTIONS: {
-            return false;
+            return false
         }
 
         default: {
-            return state;
+            return state
         }
     }
 }
@@ -294,15 +294,15 @@ export const suggestionsBar = (state = [], action) => {
     switch (action.type) {
 
         case C.CLEAR_BAR_SUGGESTIONS: {
-            return [];
+            return []
         }
 
         case C.CHANGE_BAR_SUGGESTIONS: {
-            return action.payload;
+            return action.payload
         }
 
         default: {
-            return state;
+            return state
         }
 
 
@@ -319,19 +319,19 @@ export const fetchingDrinks = (state = false, action) => {
     switch (action.type) {
 
         case C.FETCH_DRINK_SUGGESTIONS: {
-            return true;
+            return true
         }
 
         case C.CANCEL_FETCHING_DRINK_SUGGESTIONS: {
-            return false;
+            return false
         }
 
         case C.CHANGE_DRINK_SUGGESTIONS: {
-            return false;
+            return false
         }
 
         default: {
-            return state;
+            return state
         }
     }
 }
@@ -347,15 +347,15 @@ export const suggestionsDrink = (state = [], action) => {
 
 
         case C.CLEAR_DRINK_SUGGESTIONS: {
-            return [];
+            return []
         }
 
         case C.CHANGE_DRINK_SUGGESTIONS: {
-            return action.payload;
+            return action.payload
         }
 
         default: {
-            return state;
+            return state
         }
 
 
@@ -363,26 +363,52 @@ export const suggestionsDrink = (state = [], action) => {
 }
 
 /**
- * @description: Reducer for adding or removing an error
- * @param: state - current state of drink or null 
- * @param: action - either C.GET_LOCATION or C.SET_LOACTION
- *  - either an error message or 
+ * @description: Reducer for setting the user's geo location
+ * @param: state - current state of location or null 
+ * @param: action - C.SET_LOACTION
  */
-export const location = (state = {}, action) => {
-
+export const userLocation = (state = {}, action) => {
+    console.log('userLocation')
     switch (action.type) {
 
-        case C.SET_LOCATION: {
-            return action.payload;
-        }            
+        case C.SET_USER_LOCATION: {
+            return action.payload
+        }           
 
         default:
-            return state;
+            return state
 
     }
 
 }
 
+
+/**
+ * @description: Reducer for enabling/disabling autolocate
+ * @param: state - current state of drink or null 
+ * @param: action - either C.ENABLE_AUTO_LOCATE or C.DISABLE_AUTO_LOCATE
+ *  - either an error message or 
+ */
+export const autoLocate = (state = {}, action) => {
+    console.log('autolocate')
+    switch (action.type) {       
+
+        case C.ENABLE_AUTO_LOCATE: {
+            console.log('enable')
+            return true
+        } 
+
+        case C.DISABLE_AUTO_LOCATE: {
+            console.log('disable')
+            return false
+        }
+
+        default:
+            return state
+
+    }
+
+}
 
 
 export default combineReducers({
@@ -396,5 +422,6 @@ export default combineReducers({
         fetchingDrinks,
         suggestionsDrink
     }),
-    location
+    userLocation,
+    autoLocate
 })

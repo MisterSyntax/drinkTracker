@@ -13,36 +13,8 @@
 <body>
     <div id="react-container"></div>
     <script src="/assets/bundle.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIqb70KaCQhcc82AieTi0uhhii5PNJKqk&libraries=places"></script>
-    <script>
-        function initialize() {
-            var pyrmont = new google.maps.LatLng(42.3675294, -71.186966);
-
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: pyrmont,
-                zoom: 15
-            });
-
-            var request = {
-                location: pyrmont,
-                radius: '500',
-                query: 'restaurant'
-            };
-
-            service = new google.maps.places.PlacesService(map);
-            service.textSearch(request, callback);
-        }
-
-        function callback(results, status) {
-            if (status == google.maps.places.PlacesServiceStatus.OK) {
-                console.log(results);
-                for (var i = 0; i < results.length; i++) {
-                    var place = results[i];
-                    createMarker(results[i]);
-                }
-            }
-        }
-    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIqb70KaCQhcc82AieTi0uhhii5PNJKqk&libraries=places&callback=initService"
+        async defer></script>
 </body>
 
 </html>
