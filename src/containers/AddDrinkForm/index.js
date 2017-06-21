@@ -18,7 +18,8 @@ const mapStateToProps = (state, props) => (
         drinkSuggestions: state.drinkNames.suggestionsDrink,
         barSuggestions: state.barNames.suggestionsBar,
         fetchingDrinks: state.drinkNames.fetchingDrinks,
-        fetchingBars: state.barNames.fetchingBars
+        fetchingBars: state.barNames.fetchingBars,
+        autoLocate: state.autoLocate
     }
 )
 

@@ -1,9 +1,15 @@
 import React from 'react'
+import {
+    Link
+} from 'react-router-dom'
 
-export const Main = () => {
+const Main = () =>{
         return (
             <div id="Main">
-                Home
+                <p></p>
+                <button><Link to="/drink-list">Find Drinks Near Me</Link></button>
             </div>
         )
 }
+
+export default Main

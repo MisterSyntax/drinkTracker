@@ -7,7 +7,6 @@ import './autocomplete.scss'
 export default class AutocompleteInput extends React.Component {
     constructor(props) {
         super(props)
-
     }
     get value() {
         return this.inputText.value
@@ -17,8 +16,10 @@ export default class AutocompleteInput extends React.Component {
         this.inputText.value = inputValue
     }
 
+    //This is used to enable autoLocation for bars on a users initial focus
+
     render() {
-        const {inputId, holder="test", suggestions = [], onChange = f => f, onClear = f => f, fetching = false, onFocus} = this.props
+        const {inputId, holder="test", suggestions = [], onChange = f => f, onClear = f => f, fetching = false, onFocus = f => f} = this.props
         return (
             <div className="autocomplete">
 

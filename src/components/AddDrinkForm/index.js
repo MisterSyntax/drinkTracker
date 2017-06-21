@@ -5,7 +5,6 @@ import AutocompleteInput from "../AutocompleteInput"
 import sampleSuggestions from '../../../server/drink-names.json'
 import sampleBarSuggestions from '../../../server/bar-names.json'
 
-import BarMap from '../../containers/BarMap/'
 
 
 
@@ -41,24 +40,25 @@ export default class AddDrinkForm extends React.Component {
         this.size.value = ''
     }
     getUserLocation() {
-        console.log('get the loco')
         //get a location
-        if (navigator.geolocation) {
+        if(this.props.autoLocate){
+             if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position.coords.latitude)
                 const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
                 this.props.onSetUserLocation(userLocation)
             })
+            }
+            else {
+                //TODO: Ask the user for their location
+                this.props.userLocation.lat = 0
+                this.props.userLocation.lng = 0
+            }
         }
-        else {
-            //TODO: Ask the user for their location
-            this.props.userLocation.lat = 0
-            this.props.userLocation.lng = 0
-        }
+       
     }
 
     render() {
-        const { drinkSuggestions = [], barSuggestions = [], onAddDrink = f => f, onChangeBars = f => f, onChangeDrinks = f => f, onClearBars = f => f, onClearDrinks = f => f, fetchingBars = false, fetchingDrinks = false } = this.props
+        const { drinkSuggestions = [], barSuggestions = [], onAddDrink = f => f, onChangeBars = f => f, onChangeDrinks = f => f, onClearBars = f => f, onClearDrinks = f => f, fetchingBars = false, fetchingDrinks = false} = this.props
 
         return (
             <div id='add-drink-page'>

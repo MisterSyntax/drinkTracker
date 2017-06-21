@@ -186,7 +186,7 @@ export const randomErrors = () => (dispatch, getState) => {
  * @param {string} vale - the charachters the user has input so far
  */
 
-export const suggestDrinkNames = (value) => (dispatch, getState) => {
+export const suggestDrinkNames = (value) => (dispatch) => {
 
     //flag that we're fetching suggestions
     dispatch({
@@ -224,7 +224,7 @@ export const suggestDrinkNames = (value) => (dispatch, getState) => {
  * @param {string} value - the charachters the user has input so far
  */
 
-export const suggestBarNames = (value) => (dispatch, getState) => {
+export const suggestBarNames = (value) => (dispatch) => {
 
     //flag that we're fetching suggestions
     dispatch({
@@ -256,11 +256,17 @@ export const suggestBarNames = (value) => (dispatch, getState) => {
 
 }
 
+/**
+ * @description: A thunk which turns off the the autoLocate when we set a user location
+ * @param {string} value - the charachters the user has input so far
+ */
+
 export const setUserLocation = (userLocation) => {
-    return {
-        type: C.SET_USER_LOCATION,
-        payload: userLocation
-    }
+
+        return {
+            type: C.SET_USER_LOCATION,
+            payload: userLocation
+        }
 }
 
 export const enableAutoLocate = () => {

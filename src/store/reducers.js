@@ -368,7 +368,6 @@ export const suggestionsDrink = (state = [], action) => {
  * @param: action - C.SET_LOACTION
  */
 export const userLocation = (state = {}, action) => {
-    console.log('userLocation')
     switch (action.type) {
 
         case C.SET_USER_LOCATION: {
@@ -390,18 +389,21 @@ export const userLocation = (state = {}, action) => {
  *  - either an error message or 
  */
 export const autoLocate = (state = {}, action) => {
-    console.log('autolocate')
-    switch (action.type) {       
+    switch (action.type) { 
 
         case C.ENABLE_AUTO_LOCATE: {
-            console.log('enable')
             return true
         } 
 
         case C.DISABLE_AUTO_LOCATE: {
-            console.log('disable')
             return false
         }
+
+        case C.SET_USER_LOCATION: {
+            return false
+        }
+
+        
 
         default:
             return state
