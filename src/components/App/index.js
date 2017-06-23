@@ -25,7 +25,6 @@ export default class App extends React.Component {
         return (
             <Router>
                 <div id='all-content'>
-
                     <Nav />
                     <div id='page-content'>
                         <Switch>

@@ -21,20 +21,20 @@ import fetch from "isomorphic-fetch"
  * @param {size} size - size of drink in oz.
  * @return
  */
-export const addDrink = (name, bar, price, size, drinkId) => {
+export const addDrink = ({name, bar, price, size, geo, address, drinkId}) => {
 
     //Application logic
     const today = new Date()
     const currentYMD = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()
     const newId = drinkId ? drinkId : parseInt(today.getTime().valueOf())
 
-
     return {
         type: C.ADD_DRINK,
         payload: {
             name,
             bar,
-            geo: ("TODOgeo" + today.getTime().valueOf()),
+            geo,
+            address,
             price,
             size,
             totalDrinks: 1,
@@ -249,10 +249,9 @@ export const suggestBarNames = (value) => (dispatch) => {
                 cancelFetchingBarSuggestions()
             )
         }
-
+        
 
         )
-
 
 }
 
@@ -263,10 +262,10 @@ export const suggestBarNames = (value) => (dispatch) => {
 
 export const setUserLocation = (userLocation) => {
 
-        return {
-            type: C.SET_USER_LOCATION,
-            payload: userLocation
-        }
+    return {
+        type: C.SET_USER_LOCATION,
+        payload: userLocation
+    }
 }
 
 export const enableAutoLocate = () => {

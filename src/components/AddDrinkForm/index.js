@@ -14,47 +14,92 @@ import sampleBarSuggestions from '../../../server/bar-names.json'
 
 export default class AddDrinkForm extends React.Component {
     constructor(props) {
+
         super(props)
+
         this.handleSubmit = this.handleSubmit.bind(this)
         this.getUserLocation = this.getUserLocation.bind(this)
-        
+        this.initGoogleAutocomplete = this.initGoogleAutocomplete.bind(this)
+        this.setBarInfo = this.setBarInfo.bind(this)
+
+        this.googleAutocomplete = undefined
+        this.radius = undefined
+
     }
-    
+
     //clears out any lingering suggestions from reloading the page
-    componentWillMount(){
+    componentWillMount() {
         this.props.onClearBars()
         this.props.onClearDrinks()
+
     }
 
     handleSubmit(evt) {
         evt.preventDefault()
         this.props.onAddDrink({
             name: this.name.value,
-            bar: this.bar.value,
+            bar: this.bar,
             price: parseFloat(this.price.value),
-            size: parseFloat(this.size.value)
+            size: parseFloat(this.size.value),
+            geo: this.geo,
+            address: this.address
         })
         this.name.value = ''
-        this.bar.value = ''
+        this.bar = ''
         this.price.value = ''
         this.size.value = ''
     }
+
     getUserLocation() {
         //get a location
-        if(this.props.autoLocate){
-             if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
-                this.props.onSetUserLocation(userLocation)
-            })
+        if (this.props.autoLocate) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
+                    this.props.onSetUserLocation(userLocation)
+                    this.radius = position.coords.accuracy
+                })
             }
             else {
                 //TODO: Ask the user for their location
-                this.props.userLocation.lat = 0
-                this.props.userLocation.lng = 0
+                alert('need loco')
             }
         }
-       
+
+    }
+    setBarInfo(place) {
+        this.bar = place.name
+        this.address = place.formatted_address
+        this.geo = {
+            "lat": place.geometry.location.lat(),
+            "lng": place.geometry.location.lng()
+        }
+    }
+
+    initGoogleAutocomplete() {
+        this.getUserLocation()
+        this.googleAutocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('barAutocomplete')),
+            { types: ['establishment'] })
+
+        var circle = new google.maps.Circle({
+            center: this.props.location,
+            radius: this.radius
+        })
+
+        this.googleAutocomplete.setBounds(circle.getBounds())
+
+        console.log(this.googleAutocomplete)
+
+
+        this.googleAutocomplete.addListener('place_changed', () => {
+            this.setBarInfo(this.googleAutocomplete.getPlace())
+
+            //TODO: REMOVE DEBUG
+            console.log(this.googleAutocomplete.getPlace())
+            window.place = this.googleAutocomplete.getPlace()
+        }
+        )
     }
 
     render() {
@@ -62,59 +107,54 @@ export default class AddDrinkForm extends React.Component {
 
         return (
             <div id='add-drink-page'>
-            <form id='add-drink-form' onSubmit={this.handleSubmit} >
+                <form id='add-drink-form' onSubmit={this.handleSubmit} >
 
-                <div className='formField'>
-                    
-                    <label htmlFor='bar-name'>Bar Name:</label>
+                    <div className='formField'>
 
-                    <AutocompleteInput                        
-                        inputId="barSuggestions"
-                        holder="Name of a Bar"
-                        ref={(input) => { this.bar = input }}
-                        suggestions={barSuggestions}
-                        onFocus={this.getUserLocation}
-                        onChange={()=>onChangeBars(this.bar.value)}
-                        onClear={onClearBars}
-                        fetching={fetchingBars}
-                    />
-                </div>
+                        <label htmlFor='bar-name'>Bar Name:</label>
+
+                        <input id="barAutocomplete" placeholder="Find Bar Name"
+                            onFocus={this.initGoogleAutocomplete} type="text"></input>
+
+                    </div>
 
 
-                <div className='formField'>
+                    <div className='formField'>
 
-                    <label htmlFor='drink'>Drink Name:</label>
+                        <label htmlFor='drink'>Drink Name:</label>
 
-                    <AutocompleteInput
-                        inputId="drinkSuggestions"
-                        holder="Name of a Drink"
-                        ref={(input) => { this.name = input }}
-                        suggestions={drinkSuggestions}
-                        onChange={()=>onChangeDrinks(this.name.value)}
-                        onClear={onClearDrinks}
-                        fetching={fetchingDrinks}  
-                    />
+                        <AutocompleteInput
+                            inputId="drinkSuggestions"
+                            holder="Name of a Drink"
+                            ref={(input) => { this.name = input }}
+                            suggestions={drinkSuggestions}
+                            onChange={() => onChangeDrinks(this.name.value)}
+                            onClear={onClearDrinks}
+                            fetching={fetchingDrinks}
+                        />
 
-                </div>
-
-
-                <div className='formField'>
-                    <label htmlFor='drink-size'>Size:</label>
-                    <input id='drink-size'
-                        placeholder="16"
-                        ref={(input) => { this.size = input }} />
-                </div>
+                    </div>
 
 
-                <div className='formField'>
-                    <label htmlFor='drink-price'>Price:</label>
-                    <input id='drink-price'
-                        placeholder="5"
-                        ref={(input) => { this.price = input }} />
-                </div>
-                <button>Add Drink</button>
-            </form>
+                    <div className='formField'>
+                        <label htmlFor='drink-size'>Size:</label>
+                        <input id='drink-size'
+                            placeholder="16"
+                            ref={(input) => { this.size = input }} />
+                    </div>
+
+
+                    <div className='formField'>
+                        <label htmlFor='drink-price'>Price:</label>
+                        <input id='drink-price'
+                            placeholder="5"
+                            ref={(input) => { this.price = input }} />
+                    </div>
+                    <button>Add Drink</button>
+                </form>
             </div>
         )
+
     }
+
 }

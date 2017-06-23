@@ -3,7 +3,11 @@
         {
             "name": "Budweiser",
             "bar": "Side Bar",
-            "geo": "TODO-1",
+            "geo": {
+                "lat":0,
+                "lng":0
+            },
+            "address": "",
             "price": 2,
             "size": 16,
             "totalDrinks": 1,
@@ -17,7 +21,11 @@
         {
             "name": "Budweiser",
             "bar": "Side Bar",
-            "geo": "TODO-2",
+            "geo": {
+                "lat":0,
+                "lng":0
+            },
+            "address": "",
             "price": 7,
             "size": 64,
             "totalDrinks": 1,
@@ -31,7 +39,11 @@
         {
             "name": "Bud Light",
             "bar": "Side Bar",
-            "geo": "TODO-3",
+            "geo": {
+                "lat":0,
+                "lng":0
+            },
+            "address": "",
             "price": 2,
             "size": 16,
             "totalDrinks": 1,

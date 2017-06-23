@@ -154,6 +154,7 @@ export const allDrinks = (state = [], action) => {
                     action.payload.price === drink.price
                 )
             )
+            console.log("has it alread", hasDrinkAlready)
 
             return hasDrinkAlready ?
                 state :

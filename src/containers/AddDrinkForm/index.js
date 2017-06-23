@@ -19,16 +19,19 @@ const mapStateToProps = (state, props) => (
         barSuggestions: state.barNames.suggestionsBar,
         fetchingDrinks: state.drinkNames.fetchingDrinks,
         fetchingBars: state.barNames.fetchingBars,
-        autoLocate: state.autoLocate
+        autoLocate: state.autoLocate,
+        location: state.userLocation
     }
 )
+
+
 
 const mapDispatchToProps = dispatch => {
     return {
 
-        onAddDrink({name, bar, price, size}) {
+        onAddDrink({name, bar, price, size, geo, address}) {
             dispatch(
-                addDrink(name, bar, price, size)
+                addDrink({name, bar, price, size, geo, address})
             )
         },
         onChangeBars(value) {

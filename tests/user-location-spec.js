@@ -11,11 +11,6 @@ import appReducer from '../src/store/reducers';
 import { createStore } from 'redux';
 
 
-console.log(`
-
-----------
-
-`)
 
 
 const store = createStore(appReducer, state);
@@ -40,11 +35,6 @@ describe('userLocation', function () {
     })
 })
 
-console.log(`
-
-----------
-
-`)
 
 //TEST 2. setuserLocation Action creation
 
@@ -62,11 +52,6 @@ describe('userLocation', function () {
     })
 })
 
-console.log(`
-
-----------
-
-`)
 
 
 
@@ -85,11 +70,6 @@ describe('userLocation', function () {
     })
 })
 
-console.log(`
-
-----------
-
-`)
 
 
 //4. Action creator for disableAutoLocate
@@ -106,11 +86,6 @@ describe('userLocation', function () {
 })
 
 
-console.log(`
-
-----------
-
-`)
 
 //5. ENABLE_AUTO_LOCATE test
 
@@ -131,12 +106,6 @@ describe('userLocation', function () {
 })
 
 
-
-console.log(`
-
-----------
-
-`)
 
 //6. Action creator for enableAutoLocate
 
