@@ -3,6 +3,7 @@ import { Nav } from '../Nav/'
 import Main from '../Main/'
 import DrinkList  from '../../containers/DrinkList/'
 import AddDrinkForm from '../../containers/AddDrinkForm/'
+import "./app.css" 
 
 
 /**@description: routing */

@@ -18,27 +18,31 @@ module.exports = {
         port: 3000
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                loader: "babel-loader",
-                options: {
-                    presets: ["latest", "stage-0", "react"]
-                }
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: ["latest", "stage-0", "react"]
+                        }
+                    }
+                ]
             },
             {
                 test: /.json$/,
                 exclude: /(node_modules)/,
-                loader: "json-loader"
+                use: [{ loader: "json-loader" }]
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader!autoprefixer-loader"
-            },
-            {
-                test:/\.scss$/,
-                loader:"style-loader!css-loader!autoprefixer-loader!sass-loader"
+                use: [
+                    { loader: "style-loader" },
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    { loader: "postcss-loader" }
+                ]
             }
         ]
     }

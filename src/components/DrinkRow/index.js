@@ -1,19 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types"
+import "./drink.css"
+import OverlayBox from "../OverlayBox/"
 
 
 
-export const DrinkRow = ({name="Some Drink", price=10, size=100, bar="Some Bar", drinkId, onRemoveDrink}) => {
+export const DrinkRow = ({name = "Some Drink", price = 10, size = 100, bar = "Some Bar", drinkId, onRemoveDrink}) => {
 
     return (
-        <tr className="drink">
-            <td>{name}</td>
-            <td>{price}</td>
-            <td>{size}</td>
-            <td>{bar}</td>
-            <td onClick={() => onRemoveDrink(drinkId)}>X</td>
-        </tr>);
-        
+        <div className="drink">
+
+            <div className="price">${price}</div>
+            <span>For a {size}oz {name} at {bar}</span>
+            <OverlayBox confirmFunction={onRemoveDrink} 
+                drinkId={drinkId} 
+                content="X" 
+                boxQuestion="Are you sure you want to delete the drink?">
+            </OverlayBox>
+        </div>);
+
 }
 
 DrinkRow.propTypes = {

@@ -1,0 +1,17 @@
+.drink{
+
+    display: flex;
+    align-items: center;
+
+    & .price {
+        font-size: 30px;
+        font-weight: bold;
+        color: #ABC001;
+        padding: .7em;
+    }
+
+    & .delete-drink {
+        padding: 1em
+    }
+
+}

@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types'
 import React from 'react'
-import './autocomplete.scss'
+import './autocomplete.css'
 
 export default class AutocompleteInput extends React.Component {
     constructor(props) {

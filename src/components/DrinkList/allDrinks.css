@@ -1,6 +1,10 @@
 .total-drinks{
-    
+    color: red;
 }
 .drink-count{
     background-color: lightcyan;
+}
+.all-drinks{
+    display: flex;
+    flex-direction: column;
 }

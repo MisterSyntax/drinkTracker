@@ -71,4 +71,3 @@ describe('addDrink()', function () {
         })
     })
 })
-console.log(store.getState())

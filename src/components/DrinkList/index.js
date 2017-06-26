@@ -15,27 +15,15 @@ export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
     return (
         <div className="drink-list">
             <DrinkFilters />
-            <DrinkListCount numDrinks={filteredDrinks.length}/>
-            <table className="total-drinks pure-table pure-table-horizontal">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Size</th>
-                        <th>Bar</th>
-                        <th>Remove</th>
-                    </tr>
+            <DrinkListCount numDrinks={filteredDrinks.length} />
+            <div className="all-drinks">
+                {
+                    filteredDrinks.map((drink, i) => {
 
-                </thead>
-                <tbody>
-                    {
-                        filteredDrinks.map((drink, i) => {
-
-                            return (<DrinkRow key={i} {...drink} onRemoveDrink={onRemoveDrink}/>)
-                        })
-                    }
-                </tbody>
-            </table>
+                        return (<DrinkRow key={i} {...drink} onRemoveDrink={onRemoveDrink} />)
+                    })
+                }
+            </div>
         </div>
     );
 };
