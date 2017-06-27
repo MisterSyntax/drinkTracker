@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-export const DrinkFilters = () => {
+const DrinkFilters = () => {
     return (
         <div id="drinkFilters">
             <Link to="/drink-list">All Drinks</Link>
@@ -10,3 +10,5 @@ export const DrinkFilters = () => {
         </div>
     )
 }
+
+export default DrinkFilters;

@@ -1,0 +1,5 @@
+:root {
+    --overlay-bg-z: 1;
+    --overlay-light-box-z: 2;
+    --flyout-z: 2;
+}

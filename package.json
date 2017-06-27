@@ -1,12 +1,12 @@
 {
   "name": "thirsty",
   "version": "1.0.0",
-  "description": "",
+  "description": "A react/redux program for tracking the prices of drinks",
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register ./tests/**/*spec.js",
-    "start": "./node_modules/.bin/webpack-dev-server",
-    "suggestions": "./node_modules/.bin/babel-node ./server"
+    "start": "webpack-dev-server",
+    "suggestions": "babel-node ./server"
   },
   "author": "",
   "license": "ISC",
@@ -40,10 +40,22 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-icons": "^2.2.5",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MisterSyntax/drinkTracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MisterSyntax/drinkTracker/issues"
+  },
+  "homepage": "https://github.com/MisterSyntax/drinkTracker#readme"
 }

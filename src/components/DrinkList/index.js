@@ -2,8 +2,11 @@ import React from 'react';
 import './allDrinks.css';
 import PropTypes from 'prop-types';
 import { DrinkRow } from '../DrinkRow/'
+import DrinkFilters from '../DrinkFilters'
 import { DrinkListCount } from '../DrinkListCount/'
-import { DrinkFilters } from '../DrinkFilters'
+import FlyoutPanel from '../FlyoutPanel'
+
+import FilterIcon from 'react-icons/lib/fa/filter'
 
 
 export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
@@ -14,8 +17,13 @@ export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
 
     return (
         <div className="drink-list">
-            <DrinkFilters />
+
+            <FlyoutPanel Icon={FilterIcon}>
+                <DrinkFilters />
+            </FlyoutPanel>
+
             <DrinkListCount numDrinks={filteredDrinks.length} />
+
             <div className="all-drinks">
                 {
                     filteredDrinks.map((drink, i) => {
@@ -24,6 +32,7 @@ export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
                     })
                 }
             </div>
+
         </div>
     );
 };

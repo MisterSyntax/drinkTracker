@@ -26,7 +26,7 @@ export default class OverlayBox extends React.Component {
                 <div className="open-overlay-button" onClick={this.toggleOverlay}>{this.props.content}</div>
                 <div className="overlay-box-container"
                     style={this.state.isOpen ? { display: "block" } : { display: "none" }}>
-                    <div className="overlay-content">
+                    <div className="overlay-lightbox">
                         <p>{this.props.boxQuestion}</p>
                         <button onClick={this.confirmEventAndClose}> Remove Drink </button>
                         <button onClick={this.toggleOverlay}> Cancel </button>

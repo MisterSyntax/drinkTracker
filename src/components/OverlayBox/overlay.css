@@ -1,7 +1,10 @@
+@import url('../../cssConstants/colors.css');
+@import url('../../cssConstants/z-indexes.css');
+
 .open-overlay-button{
     font-size: 20px;
     font-weight: bold;
-    color: #7D4B10;
+    color: var(--lightbox-text);
     margin:1em;
 }
 
@@ -13,15 +16,14 @@
         height: 100vh;
         top: 0;
         left: 0;
-        z-index: 1;
         font: Cantarell 25px bold deeppink;
     }
 
     & .overlay-background{
-        background-color: #edebec;
+        background-color: var(--overlay-bg-color);
         opacity: .7;
 
-        z-index: 2;
+        z-index: var(--overlay-bg-z);
 
         width: 100%;
         height: 100%;
@@ -31,7 +33,7 @@
         left: 0;
     }
 
-    & .overlay-content{
+    & .overlay-lightbox{
         /**Center the overlay**/
         position: relative;
         top: 50%;
@@ -39,13 +41,13 @@
         margin: auto;
 
         /**Style it**/
-        border: 2px solid #A1BB02;
-        background-color: #D99006;
+        border: 2px solid var(--light-box-border);
+        background-color: var(--light-box-color);
         border-radius:5px;
         color: #FFF;
         width:300px;
         min-height: 200px;
-        z-index:3;
+        z-index:var(--overlay-light-box-z);
         top:10px;
         padding:1em;
     }

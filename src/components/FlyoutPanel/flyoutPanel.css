@@ -1,0 +1,29 @@
+@import url('../../cssConstants/colors.css');
+@import url('../../cssConstants/widgetStyle.css');
+@import url('../../cssConstants/z-indexes.css');
+
+#flyout-flyout{
+    &.open{
+        display: block;
+    }
+    &.closed{
+        display: none;
+    }
+}
+
+#flyout-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width:290px;
+    background: var(--light-box-color);
+    z-index: var(--overlay-light-box-z);
+    @media (max-width: 360px){
+        width: 80vw;
+    }
+
+}
+#flyout-background{
+    @apply --overlay-bg;
+}
