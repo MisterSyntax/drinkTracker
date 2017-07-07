@@ -1,36 +1,18 @@
 {
     "allDrinks": [
         {
-            "name": "Budweiser",
-            "bar": "Side Bar",
+            "name": "Bud Light",
+            "bar": "SideBar",
             "geo": {
-                "lat":0,
-                "lng":0
+                "lat": 42.356423,
+                "lng": -71.06008400000002
             },
-            "address": "",
+            "address": "14 Bromfield St, Boston, MA 02108, USA",
             "price": 2,
             "size": 16,
             "totalDrinks": 1,
-            "lastDrank": "2017-05-30",
-            "drinkId": 0,
-            "flags": {
-                "badPrice": 0,
-                "unavailable": 0
-            }
-        },
-        {
-            "name": "Budweiser",
-            "bar": "Side Bar",
-            "geo": {
-                "lat":0,
-                "lng":0
-            },
-            "address": "",
-            "price": 7,
-            "size": 64,
-            "totalDrinks": 1,
-            "lastDrank": "2017-05-30",
-            "drinkId": 1,
+            "lastDrank": "2017-7-7",
+            "drinkId": 1499456917370,
             "flags": {
                 "badPrice": 0,
                 "unavailable": 0
@@ -38,17 +20,17 @@
         },
         {
             "name": "Bud Light",
-            "bar": "Side Bar",
+            "bar": "Coogan's",
             "geo": {
-                "lat":0,
-                "lng":0
+                "lat": 42.3582517,
+                "lng": -71.05338840000002
             },
-            "address": "",
-            "price": 2,
+            "address": "171 Milk St, Boston, MA 02109, USA",
+            "price": 1,
             "size": 16,
             "totalDrinks": 1,
-            "lastDrank": "2017-05-30",
-            "drinkId": 2,
+            "lastDrank": "2017-7-7",
+            "drinkId": 1499456941482,
             "flags": {
                 "badPrice": 0,
                 "unavailable": 0
@@ -58,23 +40,15 @@
     "errors": [],
     "barNames": {
         "fetchingBars": false,
-        "suggestionsBar": [
-            "Side Bar",
-            "The Last Drop",
-            "Donahue's"
-        ]
+        "suggestionsBar": []
     },
     "drinkNames": {
         "fetchingDrinks": false,
-        "suggestionsDrink": [
-            "Budweiser",
-            "Bud Light",
-            "PBR"
-        ]
+        "suggestionsDrink": []
     },
     "userLocation": {
-        "lat": 0,
-        "lng": 0
+        "lat": 42.3597288,
+        "lng": -71.1854302
     },
-    "autoLocate": true
+    "autoLocate": false
 }

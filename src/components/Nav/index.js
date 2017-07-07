@@ -13,12 +13,10 @@ export default class Nav extends React.Component {
         return (
 
             <div id="Nav">
-                <FlyoutPanel Icon={MenuIcon}>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/add-drink">Add Drink</Link></li>
-                        <li><Link to="/drink-list">Drink List</Link></li>
-                    </ul>
+                <FlyoutPanel flyoutButton={MenuIcon}>
+                    <div><Link className="action-item" to="/">Home</Link></div>
+                    <div><Link className="action-item" to="/add-drink">Add Drink</Link></div>
+                    <div><Link className="action-item" to="/drink-list">Drink List</Link></div>
                 </FlyoutPanel>
 
             </div>

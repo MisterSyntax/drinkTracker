@@ -1,17 +1,21 @@
+@import url('../../cssConstants/colors.css');
 .drink{
-
+    
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    border-top: 1px solid var(--fourth-color);
 
     & .price {
         font-size: 30px;
         font-weight: bold;
-        color: #ABC001;
-        padding: .7em;
+        color: var(--secondary-color);
+        padding-right: .7em;
+        padding-left: 5px;
     }
 
     & .delete-drink {
-        padding: 1em
+        padding-left: 1em
     }
 
 }

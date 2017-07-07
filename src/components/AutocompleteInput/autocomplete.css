@@ -7,7 +7,12 @@
       right: 10px;
     }
 
-    .suggestions {
+    &:empty {
+        display: none;
+    }
+}
+  
+.suggestions {
       position: absolute;
       min-width: 200px; 
       left: 0;
@@ -18,20 +23,5 @@
       overflow-y: scroll;
       z-index: 3;
       border: 1px solid lightsteelblue;
-
-
-
-      p {
-        padding: 5px 10px;
-        margin: 0;
-
-        &:hover {
-          background-color: lightgray;
-        }
-      }
-
-      &:empty {
-        display: none;
-      }
-    }
-  }
+  
+}

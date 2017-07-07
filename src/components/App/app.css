@@ -1,3 +1,60 @@
+@import url('../../cssConstants/colors.css');
+
 body {
-    font-family: Cantarell
+    font-family: Cantarell;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+button {
+    padding: .5em;
+    background: var(--primary-color);
+    border-radius: 2px;
+    border: 1px solid var(--primary-color);
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+    min-width: 75px;
+    margin: .5em;
+    cursor: pointer;
+
+    &:hover{
+        border: 1px solid var(--secondary-color);
+        color: var(--secondary-color);
+    }
+    &.secondary-button{
+        background: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+    }
+    &.secondary-button:hover{
+        background: var(--secondary-color);
+        border: 1px solid var(--third-color);
+    }
+  
+}
+
+
+a {
+    font: inherit;
+    text-decoration: none;
+    color: inherit;
+}
+
+.action-item {
+    color: black;
+    cursor: pointer;
+    &:hover{
+        color: var(--secondary-color);
+    }
+}
+
+.centered-content{
+    display: flex;
+    justify-content: center;
+}
+
+.horizontal-items{
+    display: flex;
+    justify-content: space-between;
 }

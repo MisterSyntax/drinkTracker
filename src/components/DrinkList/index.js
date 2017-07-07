@@ -17,12 +17,13 @@ export const DrinkList = ({drinks, filter, onRemoveDrink}) => {
 
     return (
         <div className="drink-list">
-
-            <FlyoutPanel Icon={FilterIcon}>
-                <DrinkFilters />
-            </FlyoutPanel>
-
-            <DrinkListCount numDrinks={filteredDrinks.length} />
+            <div className="horizontal-items filter-container">
+                <FlyoutPanel flyoutButton="Filters">
+                    <DrinkFilters />
+                </FlyoutPanel>
+                <DrinkListCount numDrinks={filteredDrinks.length} />
+            </div>
+            
 
             <div className="all-drinks">
                 {

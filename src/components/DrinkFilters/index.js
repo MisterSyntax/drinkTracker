@@ -4,9 +4,11 @@ import React from 'react'
 const DrinkFilters = () => {
     return (
         <div id="drinkFilters">
-            <Link to="/drink-list">All Drinks</Link>
-            <Link to="/drink-list/size=16">Pints</Link>
-            <Link to="/drink-list/size=64">Pitchers</Link>
+            
+            <div><Link className="action-item" to="/drink-list">All Drinks</Link></div>
+            <div><Link className="action-item" to="/drink-list/size=16">Pints</Link></div>
+            <div><Link className="action-item" to="/drink-list/size=64">Pitchers</Link></div>
+            
         </div>
     )
 }

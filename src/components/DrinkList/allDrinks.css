@@ -8,3 +8,9 @@
     display: flex;
     flex-direction: column;
 }
+.drink-list{
+    width: 100%
+}
+.filter-container{
+    padding: .5em
+}

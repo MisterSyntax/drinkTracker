@@ -1,9 +1,11 @@
 :root {
   /**also used for flyouts**/
-  --light-box-color: #D99006;
-  --light-box-border:#A1BB02; 
+  --primary-color: #D99006;
+  --secondary-color:#A1BB02; 
+  --third-color: #7D4B10;
+  --fourth-color: #F1CC48;
 
   --overlay-bg-color: #edebec;
-  --lightbox-text: #7D4B10;
+  
 
 }

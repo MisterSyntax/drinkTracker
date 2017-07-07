@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from '../Nav/'
+import TopNav from '../TopNav/'
 import Main from '../Main/'
 import DrinkList  from '../../containers/DrinkList/'
 import AddDrinkForm from '../../containers/AddDrinkForm/'
@@ -26,8 +26,8 @@ export default class App extends React.Component {
         return (
             <Router>
                 <div id='all-content'>
-                    <Nav />
-                    <div id='page-content'>
+                    <TopNav />
+                    <div id='page-content' className="centered-content">
                         <Switch>
                             <Route exact path='/' component={Main} />
 

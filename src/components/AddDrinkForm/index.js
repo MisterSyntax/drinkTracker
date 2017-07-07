@@ -5,6 +5,7 @@ import AutocompleteInput from "../AutocompleteInput"
 import sampleSuggestions from '../../../server/drink-names.json'
 import sampleBarSuggestions from '../../../server/bar-names.json'
 
+import './addDrinkForm.css'
 
 
 
@@ -89,15 +90,9 @@ export default class AddDrinkForm extends React.Component {
 
         this.googleAutocomplete.setBounds(circle.getBounds())
 
-        console.log(this.googleAutocomplete)
-
-
         this.googleAutocomplete.addListener('place_changed', () => {
             this.setBarInfo(this.googleAutocomplete.getPlace())
 
-            //TODO: REMOVE DEBUG
-            console.log(this.googleAutocomplete.getPlace())
-            window.place = this.googleAutocomplete.getPlace()
         }
         )
     }

@@ -1,0 +1,33 @@
+@import url('../../cssConstants/viewSize.css');
+
+#add-drink-page{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+#add-drink-form{
+    margin: 1em 0;
+    max-width: 500px;
+}
+.formField{
+    display:flex;
+    flex-direction: column;
+
+    & input{
+        font: inherit;    
+        @media (--small-viewport) {
+            width: 250px;
+        }   
+        @media (--medium-viewport) {
+            width: 300px;
+        } 
+        @media (--large-viewport) {
+            width: 500px;
+        }     
+        @media  (--xlarge-viewport) {
+            width: 500px;
+        }    
+    }
+    
+}
