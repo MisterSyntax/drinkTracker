@@ -1,0 +1,4 @@
+#drinkFilters{
+    display: flex;
+    flex-direction: column;
+}
