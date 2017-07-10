@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import InfoOverlay from '../InfoOverlay'
+import InfoOverlay from '../InfoOverlay/'
+import Map from '../Map/'
 
 
 /**
@@ -13,7 +14,7 @@ const DrinkInfo = ({drink, children}) => {
         <InfoOverlay className='drinkInfo' title={children}>
             <div>Bar: {drink.bar}</div>
             <div className="address">Address: {drink.address}</div>
-            <div></div>
+            <Map geo={drink.geo}/>
         </InfoOverlay>
     )
 }
