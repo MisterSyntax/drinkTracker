@@ -153,3 +153,21 @@ export default class AddDrinkForm extends React.Component {
     }
 
 }
+
+
+AddDrinkForm.propTypes = {
+
+    onClearBars: PropTypes.func.isRequired,
+    onChangeBars: PropTypes.func.isRequired,
+    fetchingBars: PropTypes.bool,
+    barSuggestions: PropTypes.array,
+
+    onClearDrinks: PropTypes.func.isRequired,
+    onChangeDrinks: PropTypes.func.isRequired,
+    onAddDrink: PropTypes.func.isRequired,
+    drinkSuggestions: PropTypes.array,
+    fetchingDrinks: PropTypes.bool,
+
+    onSetUserLocation: PropTypes.func.isRequired
+
+}

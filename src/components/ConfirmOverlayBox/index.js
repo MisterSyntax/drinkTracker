@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './overlay.css'
+import './confirmOverlay.css'
 
-export default class OverlayBox extends React.Component {
+export default class ConfirmOverlayBox extends React.Component {
     constructor(props) {
         super(props)
 
@@ -41,7 +41,8 @@ export default class OverlayBox extends React.Component {
 
 }
 
-OverlayBox.propTypes = {
+ConfirmOverlayBox.propTypes = {
     content: PropTypes.string.isRequired,
+    boxQuestion: PropTypes.string.isRequired,
     confirmFunction: PropTypes.func.isRequired
 }

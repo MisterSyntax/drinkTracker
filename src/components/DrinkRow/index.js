@@ -1,22 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types"
-import "./drink.css"
-import OverlayBox from "../OverlayBox/"
+import React from 'react';
+import PropTypes from 'prop-types'
+import './drink.css'
+
+import ConfirmOverlayBox from '../ConfirmOverlayBox/'
+import DrinkInfo from '../DrinkInfo'
 
 
 
-export const DrinkRow = ({name = "Some Drink", price = 10, size = 100, bar = "Some Bar", drinkId, onRemoveDrink}) => {
+export const DrinkRow = (props) => {
 
     return (
-        <div className="drink">
+        <div className='drink'>
 
-            <div className="price">${price}</div>
-            <span>For a {size}oz {name} at {bar}</span>
-            <OverlayBox confirmFunction={onRemoveDrink} 
-                drinkId={drinkId} 
-                content="X" 
-                boxQuestion="Are you sure you want to delete the drink?">
-            </OverlayBox>
+            <div className='price'>${props.price}</div>
+            <DrinkInfo drink={props}>
+                <span>For a {props.size}oz {props.name} at {props.bar}</span>
+            </DrinkInfo>
+            <ConfirmOverlayBox confirmFunction={props.onRemoveDrink}
+                drinkId={props.drinkId} 
+                content='X' 
+                boxQuestion='Are you sure you want to delete the drink?'>
+            </ConfirmOverlayBox>
         </div>);
 
 }
@@ -28,4 +32,14 @@ DrinkRow.propTypes = {
     bar: PropTypes.string.isRequired,
     drinkId: PropTypes.number.isRequired,
     onRemoveDrink: PropTypes.func.isRequired
+}
+
+
+DrinkRow.defaultProps = {
+    name: "Some Drink",
+    price: 2.5,
+    size: 16,
+    bar: "Some Bar",
+    drinkId: 123,
+    onRemoveDrink: f=>f
 }

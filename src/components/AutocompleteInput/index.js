@@ -53,7 +53,7 @@ export default class AutocompleteInput extends React.Component {
     }
 }
 
-AutocompleteInput.PropTypes = {
+AutocompleteInput.propTypes = {
     suggestions: PropTypes.array,
     inputId: PropTypes.string.isRequired
 }

@@ -1,0 +1,24 @@
+@import url('../../cssConstants/colors.css');
+@import url('../../cssConstants/z-indexes.css');
+@import url('../../cssConstants/widgetStyle.css');
+
+.open-overlay-button{
+    @apply --open-overlay-button;
+}
+
+.overlay-box{
+    @apply --overlay-box;
+}
+
+.overlay-box-container{
+    @apply --overlay-box-container;
+}
+
+.overlay-background{
+    @apply --overlay-background;
+}
+
+.overlay-lightbox{
+    @apply --overlay-lightbox
+
+}
