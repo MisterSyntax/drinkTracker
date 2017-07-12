@@ -7,11 +7,11 @@ body {
     font-weight: 600;
 }
 
-button {
+button, a.button {
     padding: .5em;
     background: var(--primary-color);
     border-radius: 2px;
-    border: 1px solid var(--primary-color);
+    border: 2px solid var(--primary-color);
     color: black;
     font-size: 15px;
     font-weight: 700;
@@ -20,16 +20,16 @@ button {
     cursor: pointer;
 
     &:hover{
-        border: 1px solid var(--secondary-color);
-        color: var(--secondary-color);
+        border: 2px solid var(--secondary-color);
+        opacity: .95;
     }
     &.secondary-button{
         background: var(--secondary-color);
-        border: 1px solid var(--secondary-color);
+        border: 2px solid var(--secondary-color);
     }
     &.secondary-button:hover{
-        background: var(--secondary-color);
-        border: 1px solid var(--third-color);
+        opacity: .90;
+        border: 2px solid var(--third-color);
     }
   
 }
@@ -48,6 +48,13 @@ a {
         color: var(--secondary-color);
     }
 }
+.action-item-link {
+    color: var(--secondary-color);
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+}
 
 .centered-content{
     display: flex;
@@ -58,3 +65,4 @@ a {
     display: flex;
     justify-content: space-between;
 }
+

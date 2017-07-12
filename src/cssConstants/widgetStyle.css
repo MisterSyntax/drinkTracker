@@ -1,5 +1,6 @@
 @import url('./colors.css');
 @import url('./z-indexes.css');
+@import url('./viewSize.css');
 :root {
   --overlay-bg: {
         background-color: var(--overlay-bg-color);
@@ -60,9 +61,9 @@
     }
 
     --overlay-lightbox{
+
         /**Center the overlay**/
         position: relative;
-        top: 50%;
         transform: translateY(50%);
         margin: auto;
 
@@ -72,12 +73,26 @@
         border: 2px solid var(--secondary-color);
         background-color: white;
         border-radius:5px;
-        width:300px;
         min-height: 150px;
         z-index:var(--overlay-light-box-z);
         top:10px;
         padding:1em;
 
+        @media (--small-viewport){
+            width: unset;
+        }
+
+        @media (--medium-viewport){
+            width: 320px;
+        }
+
+        @media (--large-viewport){
+            width: 600px;
+        }
+
+        @media (--xlarge-viewport){
+            width: 650px;
+        }
     }
 
 }

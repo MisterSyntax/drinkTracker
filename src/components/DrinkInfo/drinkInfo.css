@@ -1,0 +1,6 @@
+.drinkInfo{
+    & .directions{
+        padding: 1em;
+        text-align: center;
+    }
+}

@@ -12,15 +12,20 @@ export const DrinkRow = (props) => {
     return (
         <div className='drink'>
 
-            <div className='price'>${props.price}</div>
-            <DrinkInfo drink={props}>
+             <DrinkInfo drink={props}>
+                <div className='price'>${props.price}</div>
+            </DrinkInfo>
+
+            <DrinkInfo drink={props}>                
                 <span>For a {props.size}oz {props.name} at {props.bar}</span>
             </DrinkInfo>
+
             <ConfirmOverlayBox confirmFunction={props.onRemoveDrink}
                 drinkId={props.drinkId} 
                 content='X' 
                 boxQuestion='Are you sure you want to delete the drink?'>
             </ConfirmOverlayBox>
+            
         </div>);
 
 }

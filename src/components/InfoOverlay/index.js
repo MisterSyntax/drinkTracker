@@ -25,24 +25,24 @@ export default class InfoOverlay extends React.Component {
 
     render() {
         return (
-            <div className="overlay-box">
+            <div className="overlay-info-box">
 
-                <div className="open-overlay-button" onClick={this.toggleOverlay}>{this.props.title}</div>
+                <div className="open-info-overlay-button" onClick={this.toggleOverlay}>{this.props.title}</div>
 
-                <div className="overlay-box-container"
+                <div className="overlay-info-box-container"
                     style={this.state.isOpen ? { display: "block" } : { display: "none" }}>
 
-                    <div className="overlay-lightbox">
+                    <div className="overlay-info-lightbox">
                         {this.props.children}
                     </div>
 
-                    <div className="overlay-background" onClick={this.toggleOverlay}></div>
+                    <div className="overlay-info-background" onClick={this.toggleOverlay}></div>
 
                 </div>
 
             </div>
         )
-    }d
+    }
 
 }
 
